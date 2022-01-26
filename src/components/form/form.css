@@ -1,0 +1,36 @@
+.drop {
+  padding-left: 20px;
+  cursor: pointer;
+  color: #bfbfbf;
+}
+
+.form__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom: 1px solid #bfbfbf;
+}
+
+.form {
+  height: 50px;
+  background-color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form__input {
+  height: 100%;
+  width: 80%;
+  border: none;
+  font-size: 20px;
+}
+.hidden {
+  display: none;
+}
+::placeholder {
+  color: #bfbfbf;
+  opacity: 1;
+}
