@@ -4,7 +4,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+body{
+    background-color: #f6f6f6;
+}
 #root{
     background-color: #f6f6f6;
     display: flex;
