@@ -18,7 +18,11 @@ export default class Filters extends Component {
 
   render() {
     return (
-      <div className="filters__container">
+      <div
+        className={`filters__container ${
+          this.props.todoList.length > 0 ? '' : 'hidden'
+        }`}
+      >
         <div className="filters">
           <span className="count">
             {this.getActiveTodos().length} items left
@@ -52,7 +56,14 @@ export default class Filters extends Component {
               completed
             </button>
           </div>
-          <button className="delete-complete btn">clear completed</button>
+
+          <button
+            onClick={this.props.clearHandler}
+            className={`delete-complete btn ${this.getcompletedTodos().length ===
+              0 ? 'unvisible' : ''}`}
+          >
+            clear completed
+          </button>
         </div>
         <div className="overlays">
           <div className="overlay1 overlay"></div>

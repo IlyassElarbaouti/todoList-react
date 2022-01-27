@@ -41,6 +41,13 @@ export default class App extends Component {
     });
   }
 
+  // clear handler
+  clearHandler() {
+    this.state.todoList = this.state.todoList.filter(todo => !todo.checked);
+    this.rerender()
+  }
+
+
   //get todo by id
   getIndexOfTodo(id) {
     return this.state.todoList.findIndex((todo) => todo.id === id);
@@ -111,6 +118,7 @@ export default class App extends Component {
             currentStatus={this.state.currentStatus}
             setStatus={this.setStatus.bind(this)}
             todoList={this.state.todoList}
+            clearHandler={this.clearHandler.bind(this)}
           />
 
         </div>
