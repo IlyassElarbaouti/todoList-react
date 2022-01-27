@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import "./form.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import React, { Component } from 'react';
+import './form.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 export default class Form extends Component {
   render() {
