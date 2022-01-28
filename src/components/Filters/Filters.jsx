@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './filters.css';
+import './Filters.css';
 
 export default class Filters extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ export default class Filters extends Component {
   }
 
   //get completed todos
-  getcompletedTodos() {
+  getCompletedTodos() {
     return this.props.todoList.filter((todo) => todo.checked);
   }
 
@@ -59,7 +59,7 @@ export default class Filters extends Component {
 
           <button
             onClick={this.props.clearHandler}
-            className={`delete-complete btn ${this.getcompletedTodos().length ===
+            className={`delete-complete btn ${this.getCompletedTodos().length ===
               0 ? 'unvisible' : ''}`}
           >
             clear completed

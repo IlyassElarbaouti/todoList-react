@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
-import Form from '../form/Form.jsx';
-import Filters from '../filters/Filters.jsx';
-import TodoList from '../todoList/TodoList.jsx';
-import './app.css';
-import Status from '/src/statusMock.js';
+import Form from '../Form/Form.jsx';
+import Filters from '../Filters/Filters.jsx';
+import TodoList from '../TodoList/TodoList.jsx';
+import './App.css';
+import Status from '/src/scripts/status.js';
+const todoList_Mock = [
+  {
+    label: 'test0',
+    checked: true,
+    id: 0,
+  },
+  {
+    label: 'test1',
+    checked: false,
+    id: 1,
+  },
+];
+
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoList: [
-        {
-          label: 'test0',
-          checked: true,
-          id: 0,
-        },
-        {
-          label: 'test1',
-          checked: false,
-          id: 1,
-        },
-      ],
+      todoList: todoList_Mock,
       currentStatus: Status.all,
+      nextId:
+        todoList_Mock.length !== 0
+          ? Math.max(...todoList_Mock.map((todo) => todo.id)) + 1
+          : 0,
     };
   }
+
 
   // clear handler
   clearHandler() {
@@ -34,18 +41,7 @@ export default class App extends Component {
         })
     );
   }
-  componentDidMount() {
-    this.setState(
-      (state) =>
-        (state = {
-          ...state,
-          nextId:
-            this.state.todoList.length !== 0
-              ? Math.max(...this.state.todoList.map((todo) => todo.id)) + 1
-              : 0,
-        })
-    );
-  }
+
 
   //set status
   setStatus(newStatus) {
@@ -104,11 +100,11 @@ export default class App extends Component {
             ...state.todoList,
             {
               label,
-              id: this.state.nextId++,
+              id: this.state.nextId,
               checked: false,
             },
           ],
-          nextId:state.nextId++,
+          nextId: state.nextId+1,
         })
     );
   }
