@@ -7,7 +7,7 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
-    this.handleChange = this.handleChange.bind(this)
+    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,7 +21,7 @@ export default class Form extends Component {
     event.preventDefault();
     if (this.state.value.trim() === '') {
       this.setState({ value: '' });
-      return
+      return;
     }
     this.props.createTodo(this.state.value);
     this.setState({ value: '' });
@@ -30,7 +30,11 @@ export default class Form extends Component {
   render() {
     return (
       <div className="form__container">
-        <FontAwesomeIcon onClick={this.props.toggleChecked} icon={faChevronDown} className="drop" />
+        <FontAwesomeIcon
+          onClick={this.props.toggleChecked}
+          icon={faChevronDown}
+          className="drop"
+        />
         <form onSubmit={this.handleSubmit} className="form">
           <input
             value={this.state.value}
@@ -39,10 +43,7 @@ export default class Form extends Component {
             className="form__input"
             type="text"
           />
-          <button
-            className="form__btn hidden"
-            type="submit"
-          >
+          <button className="form__btn hidden" type="submit">
             Add todo
           </button>
         </form>

@@ -18,9 +18,7 @@ export default class Filters extends Component {
 
   render() {
     return (
-      <div
-        className='filters__container'
-      >
+      <div className="filters__container">
         <div className="filters">
           <span className="count">
             {this.getActiveTodos().length} items left
