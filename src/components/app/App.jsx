@@ -3,16 +3,11 @@ import Form from '../form/Form.jsx';
 import Filters from '../filters/Filters.jsx';
 import TodoList from '../todoList/TodoList.jsx';
 import './app.css';
+import Status from '/src/statusMock.js';
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      STATUS: {
-        all: 'all',
-        completed: 'completed',
-        active: 'active',
-      },
-
       todoList: [
         {
           label: 'test0',
@@ -25,75 +20,97 @@ export default class App extends Component {
           id: 1,
         },
       ],
+      currentStatus: Status.all,
     };
-  }
-
-  componentDidMount() {
-    this.setState({
-      ...this.state,
-
-      nextId:
-        this.state.todoList.length !== 0
-          ? Math.max(...this.state.todoList.map((todo) => todo.id)) + 1
-          : 0,
-
-      currentStatus: this.state.STATUS.all,
-    });
   }
 
   // clear handler
   clearHandler() {
-    this.state.todoList = this.state.todoList.filter(todo => !todo.checked);
-    this.rerender()
+    this.setState(
+      (state) =>
+        (state = {
+          ...state,
+          todoList: state.todoList.filter((todo) => !todo.checked),
+        })
+    );
   }
-
-
-  //get todo by id
-  getIndexOfTodo(id) {
-    return this.state.todoList.findIndex((todo) => todo.id === id);
-  }
-
-  //rerender
-  rerender() {
-    this.setState(this.state);
+  componentDidMount() {
+    this.setState(
+      (state) =>
+        (state = {
+          ...state,
+          nextId:
+            this.state.todoList.length !== 0
+              ? Math.max(...this.state.todoList.map((todo) => todo.id)) + 1
+              : 0,
+        })
+    );
   }
 
   //set status
   setStatus(newStatus) {
-    this.state.currentStatus = newStatus;
-    this.rerender();
+    this.setState((state) => (state = { ...state, currentStatus: newStatus }));
   }
 
   //edit todo by id
   editTodo(id) {
-    this.state.todoList[this.getIndexOfTodo(id)].checked =
-      !this.state.todoList[this.getIndexOfTodo(id)].checked;
-    this.rerender();
+    this.setState(
+      (state) =>
+        (state = {
+          ...state,
+          todoList: state.todoList.map((todo) => {
+            if (todo.id === id) {
+              todo.checked = !todo.checked;
+            }
+            return todo;
+          }),
+        })
+    );
   }
 
   //toggle all todos checked
   toggleChecked() {
     const isAllChecked = this.state.todoList.every((todo) => todo.checked);
-    this.state.todoList.forEach((todo) => {
-      todo.checked = !isAllChecked;
-    });
-    this.rerender();
+    this.setState(
+      (state) =>
+        (state = {
+          ...state,
+          todoList: state.todoList.map((todo) => {
+            todo.checked = !isAllChecked;
+            return todo;
+          }),
+        })
+    );
   }
 
   // delete todo by id
   deleteTodo(id) {
-    this.state.todoList.splice(this.getIndexOfTodo(id), 1);
-    this.rerender();
+    this.setState(
+      (state) =>
+        (state = {
+          ...state,
+          todoList: state.todoList.filter((todo) => todo.id !== id),
+        })
+    );
   }
 
   // create todo
   createTodo(label) {
-    this.state.todoList.push({
-      label,
-      id: this.state.nextId++,
-      checked: false,
-    });
-    this.rerender();
+    this.setState(
+      (state) =>
+        (state = {
+          ...state,
+          todoList: [
+            ...state.todoList,
+            {
+              label,
+              id: this.state.nextId++,
+              checked: false,
+            },
+          ],
+          nextId:state.nextId++,
+        })
+    );
   }
 
   render() {
@@ -101,7 +118,6 @@ export default class App extends Component {
       <>
         <h1 className="title">todos</h1>
         <div className="app">
-          
           <Form
             toggleChecked={this.toggleChecked.bind(this)}
             createTodo={this.createTodo.bind(this)}
@@ -120,7 +136,6 @@ export default class App extends Component {
             todoList={this.state.todoList}
             clearHandler={this.clearHandler.bind(this)}
           />
-
         </div>
       </>
     );

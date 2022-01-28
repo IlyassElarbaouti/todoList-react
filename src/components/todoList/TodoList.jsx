@@ -10,7 +10,7 @@ export default class TodoList extends Component {
   getListToRender() {
     if (this.props.currentStatus === 'all') {
       return this.props.todoList;
-    } else if ((this.props.currentStatus === 'completed')) {
+    } else if (this.props.currentStatus === 'completed') {
       return this.props.todoList.filter((todo) => todo.checked);
     } else {
       return this.props.todoList.filter((todo) => !todo.checked);
