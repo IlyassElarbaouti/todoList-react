@@ -19,9 +19,7 @@ export default class Filters extends Component {
   render() {
     return (
       <div
-        className={`filters__container ${
-          this.props.todoList.length > 0 ? '' : 'hidden'
-        }`}
+        className='filters__container'
       >
         <div className="filters">
           <span className="count">
@@ -56,11 +54,11 @@ export default class Filters extends Component {
               completed
             </button>
           </div>
-
           <button
-            onClick={this.props.clearHandler}
-            className={`delete-complete btn ${this.getCompletedTodos().length ===
-              0 ? 'unvisible' : ''}`}
+            onClick={this.props.handleClearCompleted}
+            className={`delete-complete btn ${
+              this.getCompletedTodos().length === 0 ? 'unvisible' : ''
+            }`}
           >
             clear completed
           </button>

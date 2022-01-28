@@ -7,6 +7,8 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // update state based on input value
@@ -29,16 +31,15 @@ export default class Form extends Component {
     return (
       <div className="form__container">
         <FontAwesomeIcon onClick={this.props.toggleChecked} icon={faChevronDown} className="drop" />
-        <form onSubmit={this.handleSubmit.bind(this)} className="form">
+        <form onSubmit={this.handleSubmit} className="form">
           <input
             value={this.state.value}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
             placeholder="What needs to be done?"
             className="form__input"
             type="text"
           />
           <button
-            onClick={this.createTodoElement}
             className="form__btn hidden"
             type="submit"
           >
