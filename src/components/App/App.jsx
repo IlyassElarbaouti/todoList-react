@@ -17,6 +17,12 @@ export default class App extends Component {
           ? Math.max(...todoList_Mock.map((todo) => todo.id)) + 1
           : 0,
     };
+    this.deleteTodo = this.deleteTodo.bind(this);
+    this.toggleChecked = this.toggleChecked.bind(this);
+    this.createTodo = this.createTodo.bind(this);
+    this.editTodo = this.editTodo.bind(this);
+    this.setStatus = this.setStatus.bind(this);
+    this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
   // clear handler
@@ -87,22 +93,22 @@ export default class App extends Component {
         <h1 className="title">todos</h1>
         <div className="app">
           <Form
-            toggleChecked={this.toggleChecked.bind(this)}
-            createTodo={this.createTodo.bind(this)}
+            toggleChecked={this.toggleChecked}
+            createTodo={this.createTodo}
           />
           <TodoList
             currentStatus={this.state.currentStatus}
-            deleteTodo={this.deleteTodo.bind(this)}
+            deleteTodo={this.deleteTodo}
             todoList={this.state.todoList}
-            editTodo={this.editTodo.bind(this)}
+            editTodo={this.editTodo}
           />
 
-          {this.state.todoList.length !== 0 ? (
+          {this.state.todoList.length > 0 ? (
             <Filters
               currentStatus={this.state.currentStatus}
-              setStatus={this.setStatus.bind(this)}
+              setStatus={this.setStatus}
               todoList={this.state.todoList}
-              handleClearCompleted={this.handleClearCompleted.bind(this)}
+              handleClearCompleted={this.handleClearCompleted}
             />
           ) : (
             ''
