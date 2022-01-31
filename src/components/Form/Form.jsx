@@ -43,9 +43,6 @@ export default class Form extends Component {
             className="form__input"
             type="text"
           />
-          <button className="form__btn hidden" type="submit">
-            Add todo
-          </button>
         </form>
       </div>
     );
