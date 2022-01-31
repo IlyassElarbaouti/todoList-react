@@ -4,17 +4,17 @@ import Filters from '../Filters/Filters.jsx';
 import TodoList from '../TodoList/TodoList.jsx';
 import './App.css';
 import Status from '/src/scripts/status.js';
-import todoList_Mock from '/src/scripts/todoList_Mock.js';
+import todoListMock from '/src/scripts/todoListMock.js';
 
 export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todoList: todoList_Mock,
+      todoList: todoListMock,
       currentStatus: Status.all,
       nextId:
-        todoList_Mock.length !== 0
-          ? Math.max(...todoList_Mock.map((todo) => todo.id)) + 1
+        todoListMock.length !== 0
+          ? Math.max(...todoListMock.map((todo) => todo.id)) + 1
           : 0,
     };
     this.deleteTodo = this.deleteTodo.bind(this);
