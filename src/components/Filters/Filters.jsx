@@ -25,7 +25,7 @@ export default class Filters extends Component {
           </span>
           <div className="filter__btns">
             <button
-              onClick={() => this.props.setStatus('all')}
+              onClick={() => this.props.onSetStatus('all')}
               className={`all btn ${
                 this.props.currentStatus === 'all' ? 'border' : ''
               }`}
@@ -34,7 +34,7 @@ export default class Filters extends Component {
             </button>
 
             <button
-              onClick={() => this.props.setStatus('active')}
+              onClick={() => this.props.onSetStatus('active')}
               className={`active btn ${
                 this.props.currentStatus === 'active' ? 'border' : ''
               }`}
@@ -43,7 +43,7 @@ export default class Filters extends Component {
             </button>
 
             <button
-              onClick={() => this.props.setStatus('completed')}
+              onClick={() => this.props.onSetStatus('completed')}
               className={`completed btn ${
                 this.props.currentStatus === 'completed' ? 'border' : ''
               }`}
@@ -53,7 +53,7 @@ export default class Filters extends Component {
           </div>
           {this.getCompletedTodos().length > 0 ? (
             <button
-              onClick={this.props.handleClearCompleted}
+              onClick={this.props.onClearCompleted}
               className="delete-complete btn"
             >
               clear completed

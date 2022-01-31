@@ -106,9 +106,9 @@ export default class App extends Component {
           {this.state.todoList.length > 0 ? (
             <Filters
               currentStatus={this.state.currentStatus}
-              setStatus={this.setStatus}
+              onSetStatus={this.setStatus}
               todoList={this.state.todoList}
-              handleClearCompleted={this.handleClearCompleted}
+              onClearCompleted={this.handleClearCompleted}
             />
           ) : (
             ''
