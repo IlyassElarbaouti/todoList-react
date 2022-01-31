@@ -7,12 +7,12 @@ export default class Form extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
-    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   // update state based on input value
-  handleChange(event) {
+  handleInputChange(event) {
     this.setState({ value: event.target.value });
   }
 
@@ -38,7 +38,7 @@ export default class Form extends Component {
         <form onSubmit={this.handleSubmit} className="form">
           <input
             value={this.state.value}
-            onChange={this.handleChange}
+            onChange={this.handleInputChange}
             placeholder="What needs to be done?"
             className="form__input"
             type="text"
