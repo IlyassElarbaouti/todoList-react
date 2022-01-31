@@ -3,8 +3,8 @@ import Form from '../Form/Form.jsx';
 import Filters from '../Filters/Filters.jsx';
 import TodoList from '../TodoList/TodoList.jsx';
 import './App.css';
-import Status from '/src/scripts/status.js';
-import todoListMock from '/src/scripts/todoListMock.js';
+import Status from '/src/constants/status.js';
+import todoListMock from '/src/constants/todoListMock.js';
 
 export default class App extends Component {
   constructor(props) {

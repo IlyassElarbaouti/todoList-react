@@ -23,7 +23,6 @@ export default class Filters extends Component {
           <span className="count">
             {this.getActiveTodos().length} items left
           </span>
-
           <div className="filter__btns">
             <button
               onClick={() => this.props.setStatus('all')}
@@ -52,14 +51,16 @@ export default class Filters extends Component {
               completed
             </button>
           </div>
-          <button
-            onClick={this.props.handleClearCompleted}
-            className={`delete-complete btn ${
-              this.getCompletedTodos().length === 0 ? 'unvisible' : ''
-            }`}
-          >
-            clear completed
-          </button>
+          {this.getCompletedTodos().length > 0 ? (
+            <button
+              onClick={this.props.handleClearCompleted}
+              className="delete-complete btn"
+            >
+              clear completed
+            </button>
+          ) : (
+            ''
+          )}
         </div>
         <div className="overlays">
           <div className="overlay1 overlay"></div>

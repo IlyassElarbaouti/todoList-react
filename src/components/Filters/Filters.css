@@ -2,7 +2,7 @@
   width: 90%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: initial;
   padding: 10px 0;
 }
 
@@ -29,12 +29,16 @@
 }
 
 .count {
-  margin-left: 5px;
+ width: 30%;
+ text-align: center;
+}
+.filter__btns{
+  max-width: 40%;
+}
+.delete-complete{
+  width: 30%;
 }
 
-.unvisible {
-  visibility: hidden;
-}
 
 .checkbox {
   margin-right: 20px;
