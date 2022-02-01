@@ -24,8 +24,8 @@ export default class TodoList extends Component {
         {this.getListToRender().map((todo) => (
           <Todo
             key={todo.id}
-            deleteTodo={this.props.deleteTodo}
-            editTodo={this.props.editTodo}
+            onDeleteTodo={this.props.onDeleteTodo}
+            onEditTodo={this.props.onEditTodo}
             todo={todo}
           />
         ))}

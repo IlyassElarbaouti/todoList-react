@@ -17,11 +17,11 @@ export default class App extends Component {
           ? Math.max(...todoListMock.map((todo) => todo.id)) + 1
           : 0,
     };
-    this.deleteTodo = this.deleteTodo.bind(this);
-    this.toggleChecked = this.toggleChecked.bind(this);
-    this.createTodo = this.createTodo.bind(this);
-    this.editTodo = this.editTodo.bind(this);
-    this.setStatus = this.setStatus.bind(this);
+    this.handleDeleteTodo = this.deleteTodo.bind(this);
+    this.handleToggleChecked = this.toggleChecked.bind(this);
+    this.handleCreateTodo = this.createTodo.bind(this);
+    this.handleEditTodo = this.editTodo.bind(this);
+    this.handleSetStatus = this.setStatus.bind(this);
     this.handleClearCompleted = this.handleClearCompleted.bind(this);
   }
 
@@ -42,7 +42,7 @@ export default class App extends Component {
   editTodo(id) {
     this.setState({
       ...this.state,
-      todoList: this.state.todoList.map((todo) => {
+      todoList: [...this.state.todoList].map((todo) => {
         if (todo.id === id) {
           todo.checked = !todo.checked;
         }
@@ -56,7 +56,7 @@ export default class App extends Component {
     const isAllChecked = this.state.todoList.every((todo) => todo.checked);
     this.setState({
       ...this.state,
-      todoList: this.state.todoList.map((todo) => {
+      todoList: [...this.state.todoList].map((todo) => {
         todo.checked = !isAllChecked;
         return todo;
       }),
@@ -67,7 +67,7 @@ export default class App extends Component {
   deleteTodo(id) {
     this.setState({
       ...this.state,
-      todoList: this.state.todoList.filter((todo) => todo.id !== id),
+      todoList: [...this.state.todoList].filter((todo) => todo.id !== id),
     });
   }
 
@@ -93,20 +93,20 @@ export default class App extends Component {
         <h1 className="title">todos</h1>
         <div className="app">
           <Form
-            toggleChecked={this.toggleChecked}
-            createTodo={this.createTodo}
+            onToggleChecked={this.handleToggleChecked}
+            onCreateTodo={this.handleCreateTodo}
           />
           <TodoList
             currentStatus={this.state.currentStatus}
-            deleteTodo={this.deleteTodo}
+            onDeleteTodo={this.handleDeleteTodo}
             todoList={this.state.todoList}
-            editTodo={this.editTodo}
+            onEditTodo={this.handleEditTodo}
           />
 
           {this.state.todoList.length > 0 ? (
             <Filters
               currentStatus={this.state.currentStatus}
-              onSetStatus={this.setStatus}
+              onSetStatus={this.handleSetStatus}
               todoList={this.state.todoList}
               onClearCompleted={this.handleClearCompleted}
             />

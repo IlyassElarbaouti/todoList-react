@@ -23,7 +23,7 @@ export default class Form extends Component {
       this.setState({ value: '' });
       return;
     }
-    this.props.createTodo(this.state.value);
+    this.props.onCreateTodo(this.state.value);
     this.setState({ value: '' });
   }
 
@@ -31,7 +31,7 @@ export default class Form extends Component {
     return (
       <div className="form__container">
         <FontAwesomeIcon
-          onClick={this.props.toggleChecked}
+          onClick={this.props.onToggleChecked}
           icon={faChevronDown}
           className="drop"
         />
