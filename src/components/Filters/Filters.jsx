@@ -1,72 +1,66 @@
-import React, { Component } from 'react';
-import './Filters.css';
+import React from 'react';
+import './Filters.css'
 
-export default class Filters extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  // get active todos
-  getActiveTodos() {
-    return this.props.todoList.filter((todo) => !todo.checked);
-  }
+const Filters = ({
+  todoList,
+  onSetStatus,
+  currentStatus,
+  onClearCompleted,
+}) => {
+  
+  //get active todos
+  const getActiveTodos = () => {
+    return todoList.filter((todo) => !todo.checked);
+  };
 
   //get completed todos
-  getCompletedTodos() {
-    return this.props.todoList.filter((todo) => todo.checked);
-  }
+  const getCompletedTodos = () => {
+    return todoList.filter((todo) => todo.checked);
+  };
+  return (
+    <div className="filters__container">
+      <div className="filters">
+        <span className="count">{getActiveTodos().length} items left</span>
+        <div className="filter__btns">
+          <button
+            onClick={() => onSetStatus('all')}
+            className={`all btn ${currentStatus === 'all' ? 'border' : ''}`}
+          >
+            All
+          </button>
 
-  render() {
-    return (
-      <div className="filters__container">
-        <div className="filters">
-          <span className="count">
-            {this.getActiveTodos().length} items left
-          </span>
-          <div className="filter__btns">
-            <button
-              onClick={() => this.props.onSetStatus('all')}
-              className={`all btn ${
-                this.props.currentStatus === 'all' ? 'border' : ''
-              }`}
-            >
-              All
-            </button>
+          <button
+            onClick={() => onSetStatus('active')}
+            className={`active btn ${
+              currentStatus === 'active' ? 'border' : ''
+            }`}
+          >
+            active
+          </button>
 
-            <button
-              onClick={() => this.props.onSetStatus('active')}
-              className={`active btn ${
-                this.props.currentStatus === 'active' ? 'border' : ''
-              }`}
-            >
-              active
-            </button>
-
-            <button
-              onClick={() => this.props.onSetStatus('completed')}
-              className={`completed btn ${
-                this.props.currentStatus === 'completed' ? 'border' : ''
-              }`}
-            >
-              completed
-            </button>
-          </div>
-          {this.getCompletedTodos().length > 0 ? (
-            <button
-              onClick={this.props.onClearCompleted}
-              className="delete-complete btn"
-            >
-              clear completed
-            </button>
-          ) : (
-            ''
-          )}
+          <button
+            onClick={() => onSetStatus('completed')}
+            className={`completed btn ${
+              currentStatus === 'completed' ? 'border' : ''
+            }`}
+          >
+            completed
+          </button>
         </div>
-        <div className="overlays">
-          <div className="overlay1 overlay"></div>
-          <div className="overlay2 overlay"></div>
-        </div>
+        {getCompletedTodos().length > 0 ? (
+          <button onClick={onClearCompleted} className="delete-complete btn">
+            clear completed
+          </button>
+        ) : (
+          ''
+        )}
       </div>
-    );
-  }
-}
+      <div className="overlays">
+        <div className="overlay1 overlay"></div>
+        <div className="overlay2 overlay"></div>
+      </div>
+    </div>
+  );
+};
+
+export default Filters;
