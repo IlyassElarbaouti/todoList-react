@@ -1,8 +1,20 @@
-import React from 'react';
-import Todo from '../Todo/Todo.jsx';
+import * as React from 'react';
+import Todo from '../Todo/Todo';
 import './TodoList.css'
+type Todotypes = {
+  id: number,
+  label: string,
+  checked:boolean
+}
 
-const TodoList = ({ currentStatus, todoList, onDeleteTodo, onEditTodo }) => {
+interface Props{
+  currentStatus: string;
+  todoList: Array<Todotypes>;
+  onDeleteTodo: (id:number) => void;
+  onEditTodo: (id:number) => void;
+}
+
+const TodoList = ({ currentStatus, todoList, onDeleteTodo, onEditTodo }:Props) => {
   //get filtered list
   const getListToRender = () => {
     if (currentStatus === 'all') {

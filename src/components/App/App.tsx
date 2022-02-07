@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import Filters from '../Filters/Filters.jsx';
-import Form from '../Form/Form.jsx';
-import TodoList from '../TodoList/TodoList.jsx';
+import * as React from 'react';
+import  { useState } from 'react';
+import Filters from '../Filters/Filters';
+import Form from '../Form/Form';
+import TodoList from '../TodoList/TodoList';
 import './App.css'
 
 const App = () => {
@@ -34,12 +35,12 @@ const App = () => {
   };
 
   //set status
-  const handleEditStatus = (newStatus) => {
+  const handleEditStatus = (newStatus:string) => {
     setCurrentStatus(newStatus);
   };
 
   //edit todo by id
-  const handleEditTodo = (id) => {
+  const handleEditTodo = (id:number) => {
     setTodoList(
       [...todoList].map((todo) => {
         if (todo.id === id) {
@@ -62,11 +63,11 @@ const App = () => {
   };
 
   // delete todo by id
-  const handleDeleteTodo = (id) => {
+  const handleDeleteTodo = (id:number) => {
     setTodoList([...todoList].filter((todo) => todo.id !== id));
   };
 
-  const handleCreateTodo = (label) => {
+  const handleCreateTodo = (label:string) => {
     setTodoList([...todoList, { label, id: nextId, checked: false }]);
     setNextId(nextId + 1);
   };

@@ -1,6 +1,18 @@
-import React from 'react';
+import * as React from "react";
 
-const Todo = ({todo, onEditTodo, onDeleteTodo}) => {
+type Todotypes = {
+  id: number,
+  label: string,
+  checked:boolean
+}
+
+interface Props{
+  todo:Todotypes;
+  onDeleteTodo: (id:number) => void;
+  onEditTodo: (id:number) => void;
+}
+
+const Todo = ({todo, onEditTodo, onDeleteTodo}:Props) => {
   return (
     <div className="todo">
       <input

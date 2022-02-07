@@ -1,12 +1,25 @@
-import React from 'react';
+import * as React from 'react';
 import './Filters.css'
+
+type Todotypes = {
+  id: number,
+  label: string,
+  checked:boolean
+}
+
+interface Props{
+  todoList:Array<Todotypes>;
+  onSetStatus: (status:string) => void;
+  currentStatus: string;
+  onClearCompleted:()=>void
+}
 
 const Filters = ({
   todoList,
   onSetStatus,
   currentStatus,
   onClearCompleted,
-}) => {
+}:Props) => {
   
   //get active todos
   const getActiveTodos = () => {
