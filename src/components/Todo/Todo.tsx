@@ -8,8 +8,8 @@ type Todotypes = {
 
 interface Props{
   todo:Todotypes;
-  onDeleteTodo: (id:number) => void;
   onEditTodo: (id:number) => void;
+  onDeleteTodo: (id:number) => void;
 }
 
 const Todo = ({todo, onEditTodo, onDeleteTodo}:Props) => {
