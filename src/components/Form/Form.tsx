@@ -5,7 +5,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import * as React from 'react';
 
 interface Props{
-  onCreateTodo: (label:string) => void;
+  onCreateTodo: (value:string) => void;
   onToggleChecked: () => void;
 }
 
