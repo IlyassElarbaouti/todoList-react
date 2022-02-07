@@ -1,14 +1,10 @@
 import * as React from 'react';
 import './Filters.css'
+import {TodoItems} from '../types/TodoItem'
 
-type Todotypes = {
-  id: number,
-  label: string,
-  checked:boolean
-}
 
 interface Props{
-  todoList:Array<Todotypes>;
+  todoList:Array<TodoItems>;
   onSetStatus: (status:string) => void;
   currentStatus: string;
   onClearCompleted:()=>void

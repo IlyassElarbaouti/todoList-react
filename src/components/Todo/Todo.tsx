@@ -1,13 +1,8 @@
 import * as React from "react";
-
-type Todotypes = {
-  id: number,
-  label: string,
-  checked:boolean
-}
+import {TodoItems} from '../types/TodoItem'
 
 interface Props{
-  todo:Todotypes;
+  todo:TodoItems;
   onEditTodo: (id:number) => void;
   onDeleteTodo: (id:number) => void;
 }

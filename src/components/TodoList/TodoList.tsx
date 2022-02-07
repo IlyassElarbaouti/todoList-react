@@ -1,15 +1,11 @@
 import * as React from 'react';
 import Todo from '../Todo/Todo';
 import './TodoList.css'
-type Todotypes = {
-  id: number,
-  label: string,
-  checked:boolean
-}
+import {TodoItems} from '../types/TodoItem'
 
 interface Props{
   currentStatus: string;
-  todoList: Array<Todotypes>;
+  todoList: Array<TodoItems>;
   onDeleteTodo: (id:number) => void;
   onEditTodo: (id:number) => void;
 }
