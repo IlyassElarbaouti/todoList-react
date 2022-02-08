@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MouseEvent, FormEvent, ChangeEvent } from 'react';
+import {FormEvent, ChangeEvent } from 'react';
 import { useState } from 'react';
 import { TodoItems } from '../../types/TodoItem';
 import './Todo.css'
@@ -15,7 +15,7 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo }: Props) => {
   const [showInput, setShowInput] = useState(false);
   const [value, setValue] = useState('');
 
-  const handleDoubleClick = (event: MouseEvent<HTMLHeadingElement>) => {
+  const handleDoubleClick = () => {
     setShowInput(true);
   };
 
@@ -27,11 +27,13 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo }: Props) => {
     event.preventDefault();
         if (value.trim() === '') {
           setValue('');
+          setShowInput(false);
           return;
         }
     setValue('');
     setText(value)
     setShowInput(false);
+    
   };
 
   return (
@@ -43,7 +45,7 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo }: Props) => {
         type="checkbox"
       />
       {showInput ? (
-        <form onSubmit={handleSubmit}>
+        <form className='todo__form' onSubmit={handleSubmit}>
           <input className='todo__input' value={value} onChange={handleInputChange} type="text"></input>
         </form>
       ) : (

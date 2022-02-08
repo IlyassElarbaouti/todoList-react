@@ -11,9 +11,7 @@
   outline: none;
   cursor: pointer;
 }
-.label {
-  flex: 1;
-}
+
 .todo:hover .closeBtn {
   visibility: visible;
 }
@@ -28,6 +26,7 @@
 
 h2 {
   font-weight: 300;
+   flex: 1;
 }
 .todo {
   height: 60px;
@@ -46,7 +45,12 @@ h2 {
 
 .todo__input{
      border: 1px solid #4D4D4D;
+      padding: 0px 5px;
     line-height: 26pt;
     font-size: 18pt;
     color:#4D4D4D
+}
+
+.todo__form{
+    flex:1
 }

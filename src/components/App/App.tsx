@@ -7,8 +7,9 @@ import TodoList from '../TodoList/TodoList';
 
 const App = () => {
 
-  return (
-  <TodoList/>
+  return (<>
+    <TodoList />
+  </>
   );
 };
 
