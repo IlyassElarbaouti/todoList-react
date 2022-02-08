@@ -1,50 +1,13 @@
-.label {
-  flex: 1;
+.title {
+    font-weight: 300;
+    margin: 20px 0;
+    font-size: 100px;
+    color: #ead7d7;
 }
-
-.checkbox {
-  margin-right: 20px;
-  width: 2em;
-  aspect-ratio: 1;
-  background-color: white;
-  border-radius: 50%;
-  vertical-align: middle;
-  border: 2px solid #ddd;
-  appearance: none;
-  -webkit-appearance: none;
-  outline: none;
-  cursor: pointer;
-}
-.label {
-  flex: 1;
-}
-
-.checkbox:checked {
-  border: 2px solid grey;
-  background-color: #85bb3e;
-}
-.todos {
-  background-color: white;
-}
-.todo:hover .closeBtn {
-  visibility: visible;
-}
-.closeBtn {
-  visibility: hidden;
-  background: none;
-  border: none;
-  color: #b83f45;
-  font-size: 20px;
-  cursor: pointer;
-}
-h2 {
-  font-weight: 300;
-}
-.todo {
-  height: 60px;
-  padding: 0 2%;
-  border-bottom: 1px solid #bfbfbf;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+.app {
+    background-color: white;
+    position: relative;
+    width: 45%;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%), 0 25px 50px 0 rgb(0 0 0 / 10%);
+    max-width: 500px;
 }

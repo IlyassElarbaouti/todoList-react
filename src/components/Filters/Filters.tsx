@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Filters.css'
-import {TodoItems} from '../types/TodoItem'
+import {TodoItems} from '../../types/TodoItem'
 
 
 interface Props{
