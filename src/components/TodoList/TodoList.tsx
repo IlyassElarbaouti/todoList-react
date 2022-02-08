@@ -62,8 +62,8 @@ const TodoList = () => {
 
   return (
     <>
-      <h1 className="title">todos</h1>
-      <div className="app">
+
+      <div className="todoList">
         <Form
           onToggleChecked={handleToggleChecked}
           onCreateTodo={handleCreateTodo}
@@ -82,9 +82,7 @@ const TodoList = () => {
             todoList={todoList}
             onClearCompleted={handleClearCompleted}
           />
-        ) : (
-          null
-        )}
+        ) : null}
       </div>
     </>
   );
