@@ -1,4 +1,5 @@
 import * as React from "react";
+import{useState} from "react";
 import {TodoItems} from '../types/TodoItem'
 
 interface Props{
@@ -16,7 +17,7 @@ const Todo = ({todo, onEditTodo, onDeleteTodo}:Props) => {
         className="checkbox"
         type="checkbox"
       />
-      <h2 className="label">{todo.label}</h2>
+      <h2  className="label">{todo.label}</h2>
       <button
         onClick={() => onDeleteTodo(todo.id)}
         className="closeBtn"
