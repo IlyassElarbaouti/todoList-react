@@ -1,17 +1,23 @@
 import * as React from 'react';
 import Todo from '../Todo/Todo';
-import './Todos.css'
-import {TodoItems} from '../../types/TodoItem'
+import './Todos.css';
+import { TodoItems } from '../../types/TodoItem';
 
-interface Props{
+interface Props {
   currentStatus: string;
   todoList: Array<TodoItems>;
-  onDeleteTodo: (id:number) => void;
-  onToggleTodo: (id:number) => void;
+  onDeleteTodo: (id: number) => void;
+  onToggleTodo: (id: number) => void;
+  onEditTodoText: (id: number, text: string) => void;
 }
 
-const Todos = ({ currentStatus, todoList, onDeleteTodo, onToggleTodo }: Props) => {
-  
+const Todos = ({
+  currentStatus,
+  todoList,
+  onDeleteTodo,
+  onToggleTodo,
+  onEditTodoText,
+}: Props) => {
   const getListToRender = () => {
     if (currentStatus === 'all') {
       return todoList;
@@ -26,6 +32,7 @@ const Todos = ({ currentStatus, todoList, onDeleteTodo, onToggleTodo }: Props) =
     <div className="todos">
       {getListToRender().map((todo) => (
         <Todo
+          onEditTodoText={onEditTodoText}
           key={todo.id}
           onDeleteTodo={onDeleteTodo}
           onToggleTodo={onToggleTodo}

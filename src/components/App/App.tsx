@@ -1,15 +1,13 @@
 import * as React from 'react';
-import  { useState } from 'react';
-import Filters from '../Filters/Filters';
-import Form from '../Form/Form';
 import TodoList from '../TodoList/TodoList';
-
+import './App.css';
 
 const App = () => {
-
-  return (<>
-    <TodoList />
-  </>
+  return (
+    <>
+      <h1 className="title">todos</h1>
+      <TodoList />
+    </>
   );
 };
 

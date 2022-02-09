@@ -1,15 +1,15 @@
-import { ChangeEvent,FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import './Form.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import * as React from 'react';
 
-interface Props{
-  onCreateTodo: (value:string) => void;
+interface Props {
+  onCreateTodo: (value: string) => void;
   onToggleChecked: () => void;
 }
 
-const Form = ({ onCreateTodo, onToggleChecked }:Props) => {
+const Form = ({ onCreateTodo, onToggleChecked }: Props) => {
   //state
   const [value, setValue] = useState('');
 
@@ -20,7 +20,7 @@ const Form = ({ onCreateTodo, onToggleChecked }:Props) => {
   };
 
   //handle submit
-  const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (value.trim() === '') {
       setValue('');

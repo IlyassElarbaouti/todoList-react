@@ -29,16 +29,15 @@
 }
 
 .count {
- width: 30%;
- text-align: center;
+  width: 30%;
+  text-align: center;
 }
-.filter__btns{
+.filter__btns {
   max-width: 40%;
 }
-.delete-complete{
+.delete-complete {
   width: 30%;
 }
-
 
 .checkbox {
   margin-right: 20px;

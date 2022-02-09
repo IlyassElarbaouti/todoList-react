@@ -5,7 +5,13 @@
   "main": "./src/index.tsx",
   "scripts": {
     "start": "webpack serve --mode=development ",
-    "build": "webpack"
+    "build": "webpack",
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix"
+  },
+    "husky": {
+     "hooks": {
+       "pre-commit": "npm run pretest"
+     }
   },
   "keywords": [],
   "author": "",

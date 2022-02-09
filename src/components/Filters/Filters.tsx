@@ -1,13 +1,12 @@
 import * as React from 'react';
-import './Filters.css'
-import {TodoItems} from '../../types/TodoItem'
+import './Filters.css';
+import { TodoItems } from '../../types/TodoItem';
 
-
-interface Props{
-  todoList:Array<TodoItems>;
-  onSetStatus: (status:string) => void;
+interface Props {
+  todoList: Array<TodoItems>;
+  onSetStatus: (status: string) => void;
   currentStatus: string;
-  onClearCompleted:()=>void
+  onClearCompleted: () => void;
 }
 
 const Filters = ({
@@ -15,9 +14,7 @@ const Filters = ({
   onSetStatus,
   currentStatus,
   onClearCompleted,
-}:Props) => {
-  
-  //get active todos
+}: Props) => {
   const getActiveTodos = () => {
     return todoList.filter((todo) => !todo.checked);
   };
@@ -26,6 +23,7 @@ const Filters = ({
   const getCompletedTodos = () => {
     return todoList.filter((todo) => todo.checked);
   };
+
   return (
     <div className="filters__container">
       <div className="filters">

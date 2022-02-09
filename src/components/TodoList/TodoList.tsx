@@ -1,34 +1,37 @@
 import * as React from 'react';
-import  { useState } from 'react';
+import { useState } from 'react';
 import initialTodos from '../../constants/initialTodos';
 import Filters from '../Filters/Filters';
 import Form from '../Form/Form';
 import Todos from '../Todos/Todos';
-import './TodoList.css'
-
+import './TodoList.css';
 
 const TodoList = () => {
-
   const [currentStatus, setCurrentStatus] = useState('all');
   const [todoList, setTodoList] = useState(initialTodos);
   const [nextId, setNextId] = useState(
     todoList.length !== 0 ? Math.max(...todoList.map((todo) => todo.id)) + 1 : 0
   );
 
-  //functions
-
-  //clear handler
   const handleClearCompleted = () => {
     setTodoList(todoList.filter((todo) => !todo.checked));
   };
 
-  //set status
-  const handleEditStatus = (newStatus:string) => {
+  const editTodoText = (id: number, text: string) => {
+    const targetedTodo = todoList.find((todo) => todo.id === id);
+    targetedTodo.label = text;
+    setTodoList(
+      [...todoList.filter((todo) => todo.id !== id), targetedTodo].sort(
+        (a, b) => a.id - b.id
+      )
+    );
+  };
+
+  const handleEditStatus = (newStatus: string) => {
     setCurrentStatus(newStatus);
   };
 
-  //edit todo by id
-  const handleToggleTodo = (id:number) => {
+  const handleToggleTodo = (id: number) => {
     setTodoList(
       todoList.map((todo) => {
         if (todo.id === id) {
@@ -39,7 +42,6 @@ const TodoList = () => {
     );
   };
 
-  //toggle all todos checked
   const handleToggleChecked = () => {
     const isAllChecked = todoList.every((todo) => todo.checked);
     setTodoList(
@@ -50,25 +52,24 @@ const TodoList = () => {
     );
   };
 
-  // delete todo by id
-  const handleDeleteTodo = (id:number) => {
+  const handleDeleteTodo = (id: number) => {
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
 
-  const handleCreateTodo = (label:string) => {
+  const handleCreateTodo = (label: string) => {
     setTodoList([...todoList, { label, id: nextId, checked: false }]);
     setNextId(nextId + 1);
   };
 
   return (
     <>
-
       <div className="todoList">
         <Form
           onToggleChecked={handleToggleChecked}
           onCreateTodo={handleCreateTodo}
         />
         <Todos
+          onEditTodoText={editTodoText}
           currentStatus={currentStatus}
           onDeleteTodo={handleDeleteTodo}
           todoList={todoList}
