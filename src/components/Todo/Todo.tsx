@@ -26,11 +26,13 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     if (value.trim() === '') {
       setValue('');
       setShowInput(!showInput);
       return;
     }
+
     setValue('');
     setText(value);
     onEditTodoText(todo.id, value);
@@ -40,10 +42,15 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
   const handleToggleTodo = (event: FormEvent<HTMLInputElement>) => {
     onToggleTodo(todo.id);
   };
+  const handleBlur = () => {
+    setShowInput(false);
+    setValue('');
+  };
 
   return (
     <div onDoubleClick={handleDoubleClick} className="todo">
       <input
+        onDoubleClick={(e) => e.stopPropagation()}
         checked={todo.checked}
         onClick={handleToggleTodo}
         className="checkbox"
@@ -52,6 +59,7 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
       {showInput ? (
         <form className="todo__form" onSubmit={handleSubmit}>
           <input
+            onBlur={handleBlur}
             className="todo__input"
             value={value}
             onChange={handleInputChange}
