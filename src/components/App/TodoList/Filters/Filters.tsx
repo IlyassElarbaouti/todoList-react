@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './Filters.css';
-import { TodoItems } from '../../../../types/TodoItem';
+import { TodoItem } from '../../../../types/TodoItem';
 
 interface Props {
-  todoList: Array<TodoItems>;
+  todoList: Array<TodoItem>;
   onSetStatus: (status: string) => void;
   currentStatus: string;
   onClearCompleted: () => void;

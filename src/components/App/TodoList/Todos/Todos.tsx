@@ -1,11 +1,11 @@
 import * as React from 'react';
 import Todo from './Todo/Todo';
 import './Todos.css';
-import { TodoItems } from '../../../../types/TodoItem';
+import { TodoItem } from '../../../../types/TodoItem';
 
 interface Props {
   currentStatus: string;
-  todoList: Array<TodoItems>;
+  todoList: Array<TodoItem>;
   onDeleteTodo: (id: number) => void;
   onToggleTodo: (id: number) => void;
   onEditTodoText: (id: number, text: string) => void;

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { FormEvent, ChangeEvent, MouseEventHandler } from 'react';
 import { useState } from 'react';
-import { TodoItems } from '../../../../../types/TodoItem';
+import { TodoItem } from '../../../../../types/TodoItem';
 import './Todo.css';
 
 interface Props {
-  todo: TodoItems;
+  todo: TodoItem;
   onToggleTodo: (id: number) => void;
   onDeleteTodo: (id: number) => void;
   onEditTodoText: (id: number, label: string) => void;
