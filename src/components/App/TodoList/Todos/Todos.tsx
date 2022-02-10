@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Todo from '../Todo/Todo';
+import Todo from './Todo/Todo';
 import './Todos.css';
-import { TodoItems } from '../../types/TodoItem';
+import { TodoItems } from '../../../../types/TodoItem';
 
 interface Props {
   currentStatus: string;

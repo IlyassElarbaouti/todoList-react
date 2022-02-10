@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { FormEvent, ChangeEvent, MouseEventHandler } from 'react';
 import { useState } from 'react';
-import { TodoItems } from '../../types/TodoItem';
+import { TodoItems } from '../../../../../types/TodoItem';
 import './Todo.css';
 
 interface Props {
   todo: TodoItems;
   onToggleTodo: (id: number) => void;
   onDeleteTodo: (id: number) => void;
-  onEditTodoText: (id: number, text: string) => void;
+  onEditTodoText: (id: number, label: string) => void;
 }
 
 const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
-  const [text, setText] = useState(todo.label);
+  const [label, setLabel] = useState(todo.label);
   const [showInput, setShowInput] = useState(false);
   const [value, setValue] = useState('');
 
@@ -34,7 +34,7 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
     }
 
     setValue('');
-    setText(value);
+    setLabel(value);
     onEditTodoText(todo.id, value);
     setShowInput(!showInput);
   };
@@ -67,7 +67,7 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
           ></input>
         </form>
       ) : (
-        <h2 className="label">{text}</h2>
+        <h2 className="label">{label}</h2>
       )}
       <button onClick={() => onDeleteTodo(todo.id)} className="closeBtn">
         x

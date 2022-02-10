@@ -10,11 +10,8 @@ interface Props {
 }
 
 const Form = ({ onCreateTodo, onToggleChecked }: Props) => {
-  //state
   const [value, setValue] = useState('');
 
-  //functions
-  //handle input change
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   };

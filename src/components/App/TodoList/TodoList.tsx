@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useState } from 'react';
-import initialTodos from '../../constants/initialTodos';
-import Filters from '../Filters/Filters';
-import Form from '../Form/Form';
-import Todos from '../Todos/Todos';
+import initialTodos from '../../../constants/initialTodos';
+import Filters from './Filters/Filters';
+import Form from './Form/Form';
+import Todos from './Todos/Todos';
 import './TodoList.css';
 
 const TodoList = () => {

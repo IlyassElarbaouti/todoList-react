@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Filters.css';
-import { TodoItems } from '../../types/TodoItem';
+import { TodoItems } from '../../../../types/TodoItem';
 
 interface Props {
   todoList: Array<TodoItems>;
@@ -19,7 +19,6 @@ const Filters = ({
     return todoList.filter((todo) => !todo.checked);
   };
 
-  //get completed todos
   const getCompletedTodos = () => {
     return todoList.filter((todo) => todo.checked);
   };
