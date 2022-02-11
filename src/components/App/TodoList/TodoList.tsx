@@ -26,7 +26,7 @@ const TodoList = () => {
     const editTodo = (id: number, label: string) => {
         if (label) {
             setTodoList(
-                todoList.map((todo) => {
+                [...todoList].map((todo) => {
                     if (todo.id === id) {
                         todo.label = label
                     }
@@ -35,7 +35,7 @@ const TodoList = () => {
             )
         } else {
             setTodoList(
-                todoList.map((todo) => {
+                [...todoList].map((todo) => {
                     if (todo.id === id) {
                         todo.checked = !todo.checked
                     }
@@ -48,7 +48,7 @@ const TodoList = () => {
     const handleToggleChecked = () => {
         const isAllChecked = todoList.every((todo) => todo.checked)
         setTodoList(
-            todoList.map((todo) => {
+            [...todoList].map((todo) => {
                 todo.checked = !isAllChecked
                 return todo
             })
