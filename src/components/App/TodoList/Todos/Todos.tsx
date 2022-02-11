@@ -7,16 +7,14 @@ interface Props {
     currentStatus: string
     todoList: Array<TodoItem>
     onDeleteTodo: (id: number) => void
-    onToggleTodo: (id: number) => void
-    onEditTodoText: (id: number, text: string) => void
+    onEditTodo: (id: number, text: string) => void
 }
 
 const Todos = ({
     currentStatus,
     todoList,
     onDeleteTodo,
-    onToggleTodo,
-    onEditTodoText,
+    onEditTodo,
 }: Props) => {
     const getListToRender = () => {
         if (currentStatus === 'all') {
@@ -32,10 +30,9 @@ const Todos = ({
         <div className="todos">
             {getListToRender().map((todo) => (
                 <Todo
-                    onEditTodoText={onEditTodoText}
+                    onEditTodo={onEditTodo}
                     key={todo.id}
                     onDeleteTodo={onDeleteTodo}
-                    onToggleTodo={onToggleTodo}
                     todo={todo}
                 />
             ))}

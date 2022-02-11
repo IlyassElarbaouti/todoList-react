@@ -6,12 +6,11 @@ import './Todo.css'
 
 interface Props {
     todo: TodoItem
-    onToggleTodo: (id: number) => void
     onDeleteTodo: (id: number) => void
-    onEditTodoText: (id: number, label: string) => void
+    onEditTodo: (id: number, label?: string) => void
 }
 
-const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
+const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
     const [label, setLabel] = useState(todo.label)
     const [showInput, setShowInput] = useState(false)
     const [value, setValue] = useState('')
@@ -20,7 +19,7 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
         setShowInput(!showInput)
     }
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement> ) => {
         setValue(event.target.value)
     }
 
@@ -35,13 +34,10 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
 
         setValue('')
         setLabel(value)
-        onEditTodoText(todo.id, value)
+        onEditTodo(todo.id, value)
         setShowInput(!showInput)
     }
 
-    const handleToggleTodo = (event: FormEvent<HTMLInputElement>) => {
-        onToggleTodo(todo.id)
-    }
     const handleBlur = () => {
         setShowInput(false)
         setValue('')
@@ -50,9 +46,10 @@ const Todo = ({ todo, onToggleTodo, onDeleteTodo, onEditTodoText }: Props) => {
     return (
         <div onDoubleClick={handleDoubleClick} className="todo">
             <input
+                onChange={()=>{}}
                 onDoubleClick={(e) => e.stopPropagation()}
                 checked={todo.checked}
-                onClick={handleToggleTodo}
+                onClick={()=>onEditTodo(todo.id)}
                 className="checkbox"
                 type="checkbox"
             />

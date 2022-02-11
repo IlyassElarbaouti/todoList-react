@@ -19,29 +19,30 @@ const TodoList = () => {
         setTodoList(todoList.filter((todo) => !todo.checked))
     }
 
-    const editTodoText = (id: number, text: string) => {
-        const targetedTodo = todoList.find((todo) => todo.id === id)
-        targetedTodo.label = text
-        setTodoList(
-            [...todoList.filter((todo) => todo.id !== id), targetedTodo].sort(
-                (a, b) => a.id - b.id
-            )
-        )
-    }
-
     const handleEditStatus = (newStatus: string) => {
         setCurrentStatus(newStatus)
     }
 
-    const handleToggleTodo = (id: number) => {
-        setTodoList(
-            todoList.map((todo) => {
-                if (todo.id === id) {
-                    todo.checked = !todo.checked
-                }
-                return todo
-            })
-        )
+    const editTodo = (id: number, label: string) => {
+        if (label) {
+            setTodoList(
+                todoList.map((todo) => {
+                    if (todo.id === id) {
+                        todo.label = label
+                    }
+                    return todo
+                })
+            )
+        } else {
+            setTodoList(
+                todoList.map((todo) => {
+                    if (todo.id === id) {
+                        todo.checked = !todo.checked
+                    }
+                    return todo
+                })
+            )
+        }
     }
 
     const handleToggleChecked = () => {
@@ -71,11 +72,10 @@ const TodoList = () => {
                     onCreateTodo={handleCreateTodo}
                 />
                 <Todos
-                    onEditTodoText={editTodoText}
+                    onEditTodo={editTodo}
                     currentStatus={currentStatus}
                     onDeleteTodo={handleDeleteTodo}
                     todoList={todoList}
-                    onToggleTodo={handleToggleTodo}
                 />
 
                 {todoList.length > 0 ? (
