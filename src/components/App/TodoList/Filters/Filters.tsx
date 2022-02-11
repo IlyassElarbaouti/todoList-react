@@ -1,4 +1,5 @@
 import * as React from 'react'
+import allStatus from '../../../../constants/allStatus'
 import './Filters.css'
 import { TodoItem } from '../../../../types/TodoItem'
 import FilterBtn from './FilterBtn/FilterBtn'
@@ -24,21 +25,13 @@ const Filters = ({
             <div className="filters">
                 <span className="count">{activeTodosCount} items left</span>
                 <div className="filter__btns">
-                    <FilterBtn
-                        onSetStatus={onSetStatus}
-                        currentStatus={currentStatus}
-                        targetedStatus="all"
-                    />
-                    <FilterBtn
-                        onSetStatus={onSetStatus}
-                        currentStatus={currentStatus}
-                        targetedStatus="active"
-                    />
-                    <FilterBtn
-                        onSetStatus={onSetStatus}
-                        currentStatus={currentStatus}
-                        targetedStatus="completed"
-                    />
+                    {allStatus.map((status) => (
+                        <FilterBtn
+                            onSetStatus={onSetStatus}
+                            currentStatus={currentStatus}
+                            targetedStatus={status}
+                        />
+                    ))}
                 </div>
                 {completedTodosExist ? (
                     <button

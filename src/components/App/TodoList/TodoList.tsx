@@ -70,14 +70,13 @@ const TodoList = () => {
                 <Form
                     onToggleChecked={handleToggleChecked}
                     onCreateTodo={handleCreateTodo}
-                />
+                    />
                 <Todos
                     onEditTodo={editTodo}
                     currentStatus={currentStatus}
                     onDeleteTodo={handleDeleteTodo}
                     todoList={todoList}
                 />
-
                 {todoList.length > 0 ? (
                     <Filters
                         currentStatus={currentStatus}
