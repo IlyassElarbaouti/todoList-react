@@ -1,50 +1,49 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
-import './Form.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import * as React from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react'
+import './Form.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import * as React from 'react'
 
 interface Props {
-  onCreateTodo: (value: string) => void;
-  onToggleChecked: () => void;
+    onCreateTodo: (value: string) => void
+    onToggleChecked: () => void
 }
 
 const Form = ({ onCreateTodo, onToggleChecked }: Props) => {
-  const [value, setValue] = useState('');
+    const [value, setValue] = useState('')
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
-
-  //handle submit
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (value.trim() === '') {
-      setValue('');
-      return;
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setValue(event.target.value)
     }
-    onCreateTodo(value);
-    setValue('');
-  };
 
-  return (
-    <div className="form__container">
-      <FontAwesomeIcon
-        onClick={onToggleChecked}
-        icon={faChevronDown}
-        className="drop"
-      />
-      <form onSubmit={handleSubmit} className="form">
-        <input
-          value={value}
-          onChange={handleInputChange}
-          placeholder="What needs to be done?"
-          className="form__input"
-          type="text"
-        />
-      </form>
-    </div>
-  );
-};
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        if (value.trim() === '') {
+            setValue('')
+            return
+        }
+        onCreateTodo(value)
+        setValue('')
+    }
 
-export default Form;
+    return (
+        <div className="form__container">
+            <FontAwesomeIcon
+                onClick={onToggleChecked}
+                icon={faChevronDown}
+                className="drop"
+            />
+            <form onSubmit={handleSubmit} className="form">
+                <input
+                    value={value}
+                    onChange={handleInputChange}
+                    placeholder="What needs to be done?"
+                    className="form__input"
+                    type="text"
+                />
+            </form>
+        </div>
+    )
+}
+
+export default Form

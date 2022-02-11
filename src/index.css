@@ -4,11 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    background-color: #F1DAC4;
+body {
+    background-color: #f1dac4;
 }
-#root{
-    background-color: #F1DAC4;
+#root {
+    background-color: #f1dac4;
     display: flex;
     width: 100vw;
     flex-direction: column;
