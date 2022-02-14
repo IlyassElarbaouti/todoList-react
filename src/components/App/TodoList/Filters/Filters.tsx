@@ -27,6 +27,7 @@ const Filters = ({
                 <div className="filter__btns">
                     {allStatus.map((status) => (
                         <FilterBtn
+                            key={allStatus.indexOf(status)}
                             onSetStatus={onSetStatus}
                             currentStatus={currentStatus}
                             targetedStatus={status}
