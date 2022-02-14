@@ -70,7 +70,7 @@ const TodoList = () => {
                 <Form
                     onToggleChecked={handleToggleChecked}
                     onCreateTodo={handleCreateTodo}
-                    />
+                />
                 <Todos
                     onEditTodo={editTodo}
                     currentStatus={currentStatus}

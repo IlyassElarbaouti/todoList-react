@@ -19,8 +19,8 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
         setShowInput(!showInput)
     }
 
-    const handleInputChange = (event: ChangeEvent<HTMLInputElement> ) => {
-      setInputValue(event.target.value)
+    const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setInputValue(event.target.value)
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -32,7 +32,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
             return
         }
 
-      setInputValue('')
+        setInputValue('')
         setLabel(inputValue)
         onEditTodo(todo.id, inputValue)
         setShowInput(!showInput)
@@ -40,7 +40,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
 
     const handleBlur = () => {
         setShowInput(false)
-      setInputValue('')
+        setInputValue('')
     }
 
     return (
