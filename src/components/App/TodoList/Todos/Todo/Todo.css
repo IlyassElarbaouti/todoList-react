@@ -1,65 +1,65 @@
 .checkbox {
-    margin-right: 20px;
-    width: 2em;
-    min-width: 2em;
-    aspect-ratio: 1;
-    background-color: white;
-    border-radius: 50%;
-    vertical-align: middle;
-    border: 2px solid #ddd;
-    appearance: none;
-    -webkit-appearance: none;
-    outline: none;
-    cursor: pointer;
+  margin-right: 20px;
+  width: 2em;
+  min-width: 2em;
+  aspect-ratio: 1;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 2px solid #ddd;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
 }
 
 .todo:hover .closeBtn {
-    visibility: visible;
+  visibility: visible;
 }
 .closeBtn {
-    visibility: hidden;
-    background: none;
-    border: none;
-    color: #b83f45;
-    font-size: 20px;
-    cursor: pointer;
+  visibility: hidden;
+  background: none;
+  border: none;
+  color: #b83f45;
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .label {
-    font-weight: 300;
-    flex: 1;
+  font-weight: 300;
+  flex: 1;
 }
 .todo {
-    overflow: hidden;
-    height: 60px;
-    padding: 0 2%;
-    border-bottom: 1px solid #bfbfbf;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  overflow: hidden;
+  height: 60px;
+  padding: 0 2%;
+  border-bottom: 1px solid #bfbfbf;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .checkbox:checked {
-    border: 2px solid grey;
-    background-color: #85bb3e;
+  border: 2px solid grey;
+  background-color: #85bb3e;
 }
 
 .todo__input {
-    border: 1px solid #4d4d4d;
-    padding: 0px 5px;
-    line-height: 26pt;
-    font-size: 18pt;
-    color: #4d4d4d;
-    max-width: 80%;
-    margin: 0;
+  border: 1px solid #4d4d4d;
+  padding: 0px 5px;
+  line-height: 26pt;
+  font-size: 18pt;
+  color: #4d4d4d;
+  max-width: 80%;
+  margin: 0;
 }
 
 .todo__form {
-    flex: 1;
-    max-width: 80%;
+  flex: 1;
+  max-width: 80%;
 }
 
-.label-done{
-    text-decoration: line-through;
-    color: grey;
+.label-done {
+  text-decoration: line-through;
+  color: grey;
 }

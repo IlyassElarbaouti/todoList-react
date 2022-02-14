@@ -1,27 +1,27 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    background-color: #f1dac4;
+  background-color: #f1dac4;
 }
 #root {
-    background-color: #f1dac4;
-    display: flex;
-    width: 100vw;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #4d4d4d;
+  background-color: #f1dac4;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #4d4d4d;
 }
 
 textarea:focus,
 input:focus {
-    outline: none;
+  outline: none;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
