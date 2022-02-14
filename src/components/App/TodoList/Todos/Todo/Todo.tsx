@@ -64,7 +64,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
                     ></input>
                 </form>
             ) : (
-                <h2 className="label">{label}</h2>
+                <h2 className={`label ${todo.checked?'label-done':null}`}>{label}</h2>
             )}
             <button onClick={() => onDeleteTodo(todo.id)} className="closeBtn">
                 x
