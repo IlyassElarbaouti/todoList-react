@@ -39,9 +39,16 @@
   justify-content: space-between;
 }
 
-.checkbox:checked {
-  border: 2px solid grey;
-  background-color: #85bb3e;
+
+.checkbox__container{
+    position: relative;
+}
+.checkmark{
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    color: green;
+    pointer-events: none
 }
 
 .todo__input {

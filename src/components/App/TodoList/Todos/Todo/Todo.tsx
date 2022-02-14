@@ -2,6 +2,8 @@ import * as React from 'react'
 import { FormEvent, ChangeEvent, MouseEventHandler } from 'react'
 import { useState } from 'react'
 import { TodoItem } from '../../../../../types/TodoItem'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import './Todo.css'
 
 interface Props {
@@ -45,14 +47,21 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
 
   return (
     <div onDoubleClick={handleDoubleClick} className="todo">
-      <input
-        onChange={() => {}}
+      <div
         onDoubleClick={(e) => e.stopPropagation()}
-        checked={todo.checked}
-        onClick={() => onEditTodo({ ...todo, checked: !todo.checked })}
-        className="checkbox"
-        type="checkbox"
-      />
+        className="checkbox__container"
+      >
+        {todo.checked ? (
+          <FontAwesomeIcon className="checkmark" icon={faCheck} />
+        ) : null}
+        <input
+          onChange={() => {}}
+          checked={todo.checked}
+          onClick={() => onEditTodo({ ...todo, checked: !todo.checked })}
+          className="checkbox"
+          type="checkbox"
+        />
+      </div>
       {showInput ? (
         <form className="todo__form" onSubmit={handleSubmit}>
           <input
