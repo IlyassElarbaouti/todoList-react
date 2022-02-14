@@ -63,3 +63,7 @@
   text-decoration: line-through;
   color: grey;
 }
+
+.closeBtn:hover{
+    color: red;
+}
