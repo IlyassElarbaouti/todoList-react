@@ -13,43 +13,43 @@ interface Props {
 const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
     const [label, setLabel] = useState(todo.label)
     const [showInput, setShowInput] = useState(false)
-    const [value, setValue] = useState('')
+    const [inputValue, setInputValue] = useState('')
 
     const handleDoubleClick = () => {
         setShowInput(!showInput)
     }
 
     const handleInputChange = (event: ChangeEvent<HTMLInputElement> ) => {
-        setValue(event.target.value)
+      setInputValue(event.target.value)
     }
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
 
-        if (value.trim() === '') {
-            setValue('')
+        if (inputValue.trim() === '') {
+            setInputValue('')
             setShowInput(!showInput)
             return
         }
 
-        setValue('')
-        setLabel(value)
-        onEditTodo(todo.id, value)
+      setInputValue('')
+        setLabel(inputValue)
+        onEditTodo(todo.id, inputValue)
         setShowInput(!showInput)
     }
 
     const handleBlur = () => {
         setShowInput(false)
-        setValue('')
+      setInputValue('')
     }
 
     return (
         <div onDoubleClick={handleDoubleClick} className="todo">
             <input
-                onChange={()=>{}}
+                onChange={() => {}}
                 onDoubleClick={(e) => e.stopPropagation()}
                 checked={todo.checked}
-                onClick={()=>onEditTodo(todo.id)}
+                onClick={() => onEditTodo(todo.id)}
                 className="checkbox"
                 type="checkbox"
             />
@@ -58,7 +58,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
                     <input
                         onBlur={handleBlur}
                         className="todo__input"
-                        value={value}
+                        value={inputValue}
                         onChange={handleInputChange}
                         type="text"
                     ></input>
