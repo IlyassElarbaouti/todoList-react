@@ -8,10 +8,10 @@ import { TodoItem } from '../../../../types/TodoItem'
 interface Props {
   onCreateTodo: (value: string) => void
   onToggleChecked: () => void
-  todoList: { label: string; checked: boolean; id: number }[]
+  isAllChecked:boolean
 }
 
-const Form = ({ onCreateTodo, onToggleChecked , todoList }: Props) => {
+const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
   const [value, setValue] = useState('')
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -27,13 +27,13 @@ const Form = ({ onCreateTodo, onToggleChecked , todoList }: Props) => {
     onCreateTodo(value)
     setValue('')
   }
-
+  console.log('form rendered')
   return (
     <div className="form__container">
       <FontAwesomeIcon
         onClick={onToggleChecked}
         icon={faChevronDown}
-        className={`drop ${todoList.every(todo=>todo.checked)?'dark':null}`}
+        className={`drop ${isAllChecked ? 'dark' : null}`}
       />
       <form onSubmit={handleSubmit} className="form">
         <input
@@ -48,4 +48,4 @@ const Form = ({ onCreateTodo, onToggleChecked , todoList }: Props) => {
   )
 }
 
-export default Form
+export default React.memo(Form)

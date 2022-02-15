@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useMemo,useCallback } from 'react'
 import todos_Mock from '../../../constants/todos_Mock'
 import Filters from './Filters/Filters'
 import Form from './Form/Form'
@@ -18,29 +18,29 @@ const TodoList = () => {
     setTodoList(todoList.filter((todo) => !todo.checked))
   }
 
-  const handleEditStatus = (newStatus: string) => {
-    setCurrentStatus(newStatus)
-  }
+  const handleEditStatus =useCallback((newStatus: string) => setCurrentStatus(newStatus),[])
 
-  const editTodo = (newTodo: TodoItem) => {
+  const editTodo =(newTodo: TodoItem) => {
     setTodoList(
       todoList.map((todo) => (todo.id === newTodo.id ? newTodo : todo))
     )
   }
 
-  const handleToggleChecked = () => {
+  const handleToggleChecked =useCallback( () => {
     const isAllChecked = todoList.every((todo) => todo.checked)
     setTodoList(todoList.map((todo) => ({ ...todo, checked: !isAllChecked })))
-  }
+  },[])
 
-  const handleDeleteTodo = (id: number) => {
+  const handleDeleteTodo =(id: number) => {
     setTodoList(todoList.filter((todo) => todo.id !== id))
   }
 
-  const handleCreateTodo = (label: string) => {
+  const handleCreateTodo = useCallback((label: string) => {
     setTodoList([...todoList, { label, id: nextId, checked: false }])
     setNextId(nextId + 1)
-  }
+  }, [])
+    
+    const isAllChecked = todoList.every(todo=>todo.checked)
 
   return (
     <>
@@ -48,7 +48,7 @@ const TodoList = () => {
         <Form
           onToggleChecked={handleToggleChecked}
           onCreateTodo={handleCreateTodo}
-          todoList={todoList}
+          isAllChecked={isAllChecked}
         />
         <Todos
           onEditTodo={editTodo}

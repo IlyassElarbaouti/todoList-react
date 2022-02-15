@@ -7,6 +7,7 @@ interface Props {
 }
 
 const FilterBtn = ({ onSetStatus, currentStatus, targetedStatus }: Props) => {
+    console.log('filter btns rerendered')
   return (
     <button
       onClick={() => onSetStatus(targetedStatus)}
@@ -16,4 +17,4 @@ const FilterBtn = ({ onSetStatus, currentStatus, targetedStatus }: Props) => {
     </button>
   )
 }
-export default FilterBtn
+export default React.memo(FilterBtn)
