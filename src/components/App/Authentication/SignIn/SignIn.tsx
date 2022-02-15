@@ -20,7 +20,7 @@ const SignIn = () => {
   const handleSubmit = (event: any) => {
     event.preventDefault()
     axios
-      .post('http://localhost:9000/registration', {
+      .post('http://localhost:9000/login', {
         email,
         password,
       })
