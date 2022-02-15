@@ -3,13 +3,15 @@ import './Form.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import * as React from 'react'
+import { TodoItem } from '../../../../types/TodoItem'
 
 interface Props {
   onCreateTodo: (value: string) => void
   onToggleChecked: () => void
+  todoList: { label: string; checked: boolean; id: number }[]
 }
 
-const Form = ({ onCreateTodo, onToggleChecked }: Props) => {
+const Form = ({ onCreateTodo, onToggleChecked , todoList }: Props) => {
   const [value, setValue] = useState('')
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +33,7 @@ const Form = ({ onCreateTodo, onToggleChecked }: Props) => {
       <FontAwesomeIcon
         onClick={onToggleChecked}
         icon={faChevronDown}
-        className="drop"
+        className={`drop ${todoList.every(todo=>todo.checked)?'dark':null}`}
       />
       <form onSubmit={handleSubmit} className="form">
         <input
