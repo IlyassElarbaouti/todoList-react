@@ -27,7 +27,7 @@ const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
     onCreateTodo(value)
     setValue('')
   }
-  console.log('form rendered')
+  
   return (
     <div className="form__container">
       <FontAwesomeIcon

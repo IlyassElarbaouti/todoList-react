@@ -50,6 +50,7 @@ const TodoList = () => {
 
   return (
     <>
+      <h1 className="title"> TODOS</h1>
       <div className="todoList">
         <Form
           onToggleChecked={handleToggleChecked}
