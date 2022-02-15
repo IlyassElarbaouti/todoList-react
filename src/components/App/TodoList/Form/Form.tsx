@@ -8,7 +8,7 @@ import { TodoItem } from '../../../../types/TodoItem'
 interface Props {
   onCreateTodo: (value: string) => void
   onToggleChecked: () => void
-  isAllChecked:boolean
+  isAllChecked: boolean
 }
 
 const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {

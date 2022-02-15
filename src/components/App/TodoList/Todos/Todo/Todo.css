@@ -42,15 +42,15 @@
 .checkbox:checked {
   border: 2px solid grey;
 }
-.checkbox__container{
-    position: relative;
+.checkbox__container {
+  position: relative;
 }
-.checkmark{
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    color: rgb(4, 97, 4);
-    pointer-events: none
+.checkmark {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  color: rgb(4, 97, 4);
+  pointer-events: none;
 }
 
 .todo__input {

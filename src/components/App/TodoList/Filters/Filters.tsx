@@ -18,8 +18,8 @@ const Filters = ({
   onClearCompleted,
 }: Props) => {
   const activeTodosCount = todoList.filter((todo) => !todo.checked).length
-    const completedTodosExist = todoList.some((todo) => todo.checked)
-    console.log('filtersRerendered');
+  const completedTodosExist = todoList.some((todo) => todo.checked)
+  console.log('filtersRerendered')
 
   return (
     <div className="filters__container">

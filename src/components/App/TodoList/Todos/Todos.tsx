@@ -1,5 +1,5 @@
 import * as React from 'react'
-import {useMemo} from 'react'
+import { useMemo } from 'react'
 import Todo from './Todo/Todo'
 import './Todos.css'
 import { TodoItem } from '../../../../types/TodoItem'
@@ -30,14 +30,14 @@ const Todos = ({
   return (
     <div className="todos">
       {getListToRender().map((todo) => {
-       return (
-         <Todo
-           onEditTodo={onEditTodo}
-           key={todo.id}
-           onDeleteTodo={onDeleteTodo}
-           todo={todo}
-         />
-       )
+        return (
+          <Todo
+            onEditTodo={onEditTodo}
+            key={todo.id}
+            onDeleteTodo={onDeleteTodo}
+            todo={todo}
+          />
+        )
       })}
     </div>
   )
