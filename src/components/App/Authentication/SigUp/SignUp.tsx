@@ -11,19 +11,24 @@ import { Link } from 'react-router-dom'
 import { RightDiv } from '../styled components/Right/Right'
 import { Title } from '../styled components/Title/Title'
 import { Container } from '../styled components/Container'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
+    let navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const handleSubmit = (event: any) => {
-    event.preventDefault()
-    axios
-      .post('http://localhost:9000/registration', {
-        email,
-        password,
-      })
-      .then((res) => console.log(res))
+    const handleSubmit = (event: any) => {
+        event.preventDefault()
+        axios
+            .post('http://localhost:9000/registration', {
+                email,
+                password,
+            })
+            .then((res) => {
+                if (res.status === 201) {
+                return navigate('/')
+             } })
   }
 
   const handleEmailChange = (e: any) => {

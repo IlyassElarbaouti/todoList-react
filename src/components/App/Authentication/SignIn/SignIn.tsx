@@ -27,9 +27,25 @@ const SignIn = () => {
       })
       .then((res) => {
         console.log(res);
-        if (res.status===200) {
-        return navigate('/todo-list')
-      } })
+      
+        if (res.status === 200 && res.data.user.isActivated) {
+          return navigate('/todo-list')
+        } else if (res.status === 200 && !res.data.user.isActivated) {
+          return navigate('/activation')
+        }
+        else {
+          return navigate('/notfound')
+        }
+      }
+      ).catch(e => {
+        const res = JSON.parse(JSON.stringify(e))
+        if (res.status === 400) {
+         alert('email or passeword are incorrect')
+        }
+        else{
+          alert('server error')
+        }
+      })
   }
 
   const handleEmailChange = (e: any) => {
