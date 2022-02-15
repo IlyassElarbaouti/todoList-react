@@ -8,6 +8,10 @@ import './TodoList.css'
 import { TodoItem } from '../../../types/TodoItem'
 
 const TodoList = () => {
+  const useAuth = () => {
+  const user = {loggedIn: false}
+}
+
   const [currentStatus, setCurrentStatus] = useState('all')
   const [todoList, setTodoList] = useState(todos_Mock)
   const [nextId, setNextId] = useState(

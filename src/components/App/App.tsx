@@ -9,7 +9,6 @@ import PageNotFound from './Authentication/NotFound/PageNotFound'
 const App = () => {
   return (
     <Routes>
-      <Route path="*" element={<PageNotFound />} />
       <Route path="/" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/todo-list" element={<TodoList />} />

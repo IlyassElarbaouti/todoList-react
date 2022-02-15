@@ -7,13 +7,14 @@ import { Button } from '../styled components/Right/Form/Button/Button'
 import { Form } from '../styled components/Right/Form/Form'
 import { Input } from '../styled components/Right/Form/Input/Input'
 import { LeftDiv } from '../styled components/Left/Left'
-
 import { RightDiv } from '../styled components/Right/Right'
 import { Title } from '../styled components/Title/Title'
 import { Link } from 'react-router-dom'
 import { Container } from '../styled components/Container'
+import { useNavigate } from 'react-router-dom'
 
 const SignIn = () => {
+  let navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -24,7 +25,11 @@ const SignIn = () => {
         email,
         password,
       })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        if (res.status===200) {
+        return navigate('/todo-list')
+      } })
   }
 
   const handleEmailChange = (e: any) => {
