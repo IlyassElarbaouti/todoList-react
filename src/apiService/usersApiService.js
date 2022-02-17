@@ -37,11 +37,21 @@ export const apiSignUp = (email, password, navigate) => {
       password,
     })
     .then((res) => {
-      if (res.status === 201) {
+     
         return navigate('/')
+      
+    }).catch((e) => {
+       const res = JSON.parse(JSON.stringify(e))
+        if (res.status === 400) {
+          alert('user already exists')
+            return navigate('/')
+        }
+        else {
+          alert('server error')
       }
     })
 }
+
 
 export const apiLogout = () => {
   return axios.post(`${baseUrl}/logout`, {
