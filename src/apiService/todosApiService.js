@@ -1,5 +1,5 @@
-const baseUrl = 'http://localhost:9000/todos'
 import axios from 'axios'
+const baseUrl = 'http://localhost:9000/todos'
 
 const headers = {
   'Content-Type': 'application/json',

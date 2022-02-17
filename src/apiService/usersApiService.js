@@ -12,6 +12,7 @@ export const apiLogin = (email, password, navigate) => {
       if (res.status === 200 && res.data.user.isActivated) {
         localStorage.setItem('token', res.data.accessToken)
         localStorage.setItem('refreshToken', res.data.refreshToken)
+
         location.reload()
       } else if (res.status === 200 && !res.data.user.isActivated) {
         return navigate('/activation')
@@ -41,6 +42,7 @@ export const apiSignUp = (email, password, navigate) => {
     })
     .catch((e) => {
       const res = JSON.parse(JSON.stringify(e))
+
       if (res.status === 400) {
         alert('user already exists')
         return navigate('/')
