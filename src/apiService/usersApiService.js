@@ -31,7 +31,7 @@ export const apiLogin = (email, password, navigate) => {
 }
 
 export const apiSignUp = (email, password, navigate) => {
- return axios
+  return axios
     .post(`${baseUrl}/registration`, {
       email,
       password,
@@ -45,6 +45,12 @@ export const apiSignUp = (email, password, navigate) => {
 
 export const apiLogout = () => {
   return axios.post(`${baseUrl}/logout`, {
+    refreshToken: localStorage.getItem('refreshToken'),
+  })
+}
+
+export const apiRefresh = () => {
+  return axios.post(`${baseUrl}/refresh`, {
     refreshToken: localStorage.getItem('refreshToken'),
   })
 }

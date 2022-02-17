@@ -16,7 +16,7 @@ import {
   apiCreateTodo,
 } from '../../../apiService/todosApiService'
 import Header from './Header/Header'
-import { apiLogout } from '../../../apiService/usersApiService'
+import { apiLogout, apiRefresh } from '../../../apiService/usersApiService'
 
 const TodoList = () => {
   useEffect(() => {
@@ -28,14 +28,11 @@ const TodoList = () => {
       .catch((e) => {
         const status = JSON.parse(JSON.stringify(e)).status
         if (status === 401) {
-          console.log(status)
-          const response = axios
-            .post('http://localhost:9000/refresh', {
-              refreshToken: localStorage.getItem('refreshToken'),
-            })
-            .then(() => {
-              console.log(response)
-            })
+          apiRefresh().then((response) => {
+            localStorage.setItem('token', response.data.accessToken)
+            localStorage.setItem('refreshToken', response.data.refreshToken)
+            apiGetAllTodos()
+          })
         }
       })
   }, [])
@@ -92,10 +89,10 @@ const TodoList = () => {
   )
 
   const handleLogout = () => {
-    apiLogout().then(() =>{
+    apiLogout().then(() => {
       localStorage.clear()
       location.reload()
-  })
+    })
   }
 
   return (
