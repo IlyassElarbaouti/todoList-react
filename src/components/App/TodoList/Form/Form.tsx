@@ -3,7 +3,6 @@ import './Form.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import * as React from 'react'
-import { TodoItem } from '../../../../types/TodoItem'
 
 interface Props {
   onCreateTodo: (value: string) => void
@@ -27,7 +26,7 @@ const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
     onCreateTodo(value)
     setValue('')
   }
-  
+
   return (
     <div className="form__container">
       <FontAwesomeIcon

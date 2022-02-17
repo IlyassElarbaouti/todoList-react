@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Description } from '../styled components/Right/Description.js/Description'
 import { Paragraph } from '../styled components/Left/Paragraph/Paragraph'
 import { Button } from '../styled components/Right/Form/Button/Button'
@@ -12,40 +12,17 @@ import { Title } from '../styled components/Title/Title'
 import { Link } from 'react-router-dom'
 import { Container } from '../styled components/Container'
 import { useNavigate } from 'react-router-dom'
+import { apiLogin } from '../../../../apiService/usersApiService'
 
 const SignIn = () => {
   let navigate = useNavigate()
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    axios
-      .post('http://localhost:9000/login', {
-        email,
-        password,
-      })
-      .then((res) => {
-        console.log(res);
-      
-        if (res.status === 200 && res.data.user.isActivated) {
-          return navigate('/todo-list')
-        } else if (res.status === 200 && !res.data.user.isActivated) {
-          return navigate('/activation')
-        }
-        else {
-          return navigate('/notfound')
-        }
-      }
-      ).catch(e => {
-        const res = JSON.parse(JSON.stringify(e))
-        if (res.status === 400) {
-         alert('email or passeword are incorrect')
-        }
-        else{
-          alert('server error')
-        }
-      })
+    apiLogin(email,password,navigate)
   }
 
   const handleEmailChange = (e: any) => {
@@ -60,9 +37,7 @@ const SignIn = () => {
     <Container>
       <LeftDiv>
         <Title color="#A69CAC">Welcome Back👋</Title>
-        <Paragraph>
-          Sign in to Access your Todo List!
-        </Paragraph>
+        <Paragraph>Sign in to Access your Todo List!</Paragraph>
       </LeftDiv>
 
       <RightDiv>
@@ -85,7 +60,7 @@ const SignIn = () => {
             type="password"
             name="password"
           />
-          <Link to='/sign-up'>
+          <Link to="/sign-up">
             don't have an account?
             <br />
             sign up

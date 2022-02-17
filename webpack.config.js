@@ -9,6 +9,15 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.ts', '.tsx'],
   },
+
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    historyApiFallback: true,
+    open: true,
+    hot: true,
+  },
+
   module: {
     rules: [
       {
