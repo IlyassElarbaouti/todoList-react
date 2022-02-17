@@ -35,7 +35,6 @@ export const apiToggleChecked = () => {
 }
 
 export const apiDeleteTodo = (id) => {
-  console.log(id)
   return axios.delete(`${baseUrl}/${id}`, {
     headers,
   })

@@ -6,7 +6,6 @@ import Form from './Form/Form'
 import Todos from './Todos/Todos'
 import './TodoList.css'
 import { TodoItem } from '../../../types/TodoItem'
-import axios from 'axios'
 import {
   apiGetAllTodos,
   apiEditTodo,
@@ -39,7 +38,6 @@ const TodoList = () => {
 
   const [currentStatus, setCurrentStatus] = useState('all')
   const [todoList, setTodoList] = useState([])
-  console.log(todoList)
   const [nextId, setNextId] = useState(0)
 
   const handleEditStatus = useCallback(
