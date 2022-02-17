@@ -9,7 +9,7 @@ interface Props {
 const Header = ({ username, logout }: Props) => {
   return (
     <nav className="header">
-      <h3 className="header__title">welcome</h3>
+      <h3 className="header__title">welcome to TODO APP</h3>
       <button className="header__btn" onClick={logout}>
         logout
       </button>

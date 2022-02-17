@@ -5,3 +5,15 @@
   background-color: #a69cac;
   padding: 10px 5%;
 }
+
+.header__btn{
+    cursor: pointer;
+    padding:5px 10px;
+    border: none;
+    border-radius: 20px;
+}
+
+.header__btn:hover{
+    border:solid 1px black;
+    padding:4px 9px
+}
