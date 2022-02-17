@@ -3,16 +3,22 @@ import * as React from 'react'
 interface Props {
   onSetStatus: (status: string) => void
   currentStatus: string
-  targetedStatus: string
+  statusName: string
+  statusValue: string
 }
 
-const FilterBtn = ({ onSetStatus, currentStatus, targetedStatus }: Props) => {
+const FilterBtn = ({
+  onSetStatus,
+  currentStatus,
+  statusName,
+  statusValue,
+}: Props) => {
   return (
     <button
-      onClick={() => onSetStatus(targetedStatus)}
-      className={`btn ${currentStatus === targetedStatus ? 'border' : null}`}
+      onClick={() => onSetStatus(statusName)}
+      className={`btn ${currentStatus === statusValue ? 'border' : null}`}
     >
-      {targetedStatus}
+      {statusName}
     </button>
   )
 }

@@ -30,7 +30,8 @@ const Filters = ({
               key={allStatus.indexOf(status)}
               onSetStatus={onSetStatus}
               currentStatus={currentStatus}
-              targetedStatus={status}
+              statusName={status.name}
+              statusValue={status.value}
             />
           ))}
         </div>

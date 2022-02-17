@@ -1,13 +1,13 @@
 import axios from 'axios'
 import * as React from 'react'
-import { Paragraph } from '../styled components/Left/Paragraph/Paragraph'
-import { LeftDiv } from '../styled components/Left/Left'
+import { Paragraph } from '../components/Left/Paragraph/Paragraph'
+import { LeftDiv } from '../components/Left/Left'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSadTear } from '@fortawesome/free-solid-svg-icons'
-import { RightDiv } from '../styled components/Right/Right'
-import { Title } from '../styled components/Title/Title'
+import { RightDiv } from '../components/Right/Right'
+import { Title } from '../components/Title/Title'
 import { Link } from 'react-router-dom'
-import { Container } from '../styled components/Container'
+import { Container } from '../components/Container'
 
 const PageNotFound = () => {
   return (

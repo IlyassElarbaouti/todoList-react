@@ -13,9 +13,9 @@ import {
   apiToggleChecked,
   apiDeleteTodo,
   apiCreateTodo,
-} from '../../../apiService/todosApiService'
+} from '../../../api/todos'
 import Header from './Header/Header'
-import { apiLogout, apiRefresh } from '../../../apiService/usersApiService'
+import { apiLogout, apiRefresh } from '../../../api/users'
 
 const TodoList = () => {
   useEffect(() => {
