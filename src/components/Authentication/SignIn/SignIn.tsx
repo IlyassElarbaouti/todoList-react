@@ -12,7 +12,7 @@ import { Title } from '../components/Title/Title'
 import { Link } from 'react-router-dom'
 import { Container } from '../components/Container'
 import { useNavigate } from 'react-router-dom'
-import { apiLogin } from '../../../../api/users'
+import { apiLogin } from '../../../api/users'
 
 const SignIn = () => {
   let navigate = useNavigate()

@@ -1,10 +1,10 @@
 import * as React from 'react'
-import TodoList from './components/App/TodoList/TodoList'
-import SignIn from './components/App/Authentication/SignIn/SignIn'
-import SignUp from './components/App/Authentication/SigUp/SignUp'
-import Activation from './components/App/Authentication/Activation/Activation'
+import TodoList from './components/TodoList/TodoList'
+import SignIn from './components/Authentication/SignIn/SignIn'
+import SignUp from './components/Authentication/SigUp/SignUp'
+import Activation from './components/Authentication/Activation/Activation'
 import { Routes, Route } from 'react-router-dom'
-import PageNotFound from './components/App/Authentication/NotFound/PageNotFound'
+import PageNotFound from './components/Authentication/NotFound/PageNotFound'
 
 const App = () => {
   return (

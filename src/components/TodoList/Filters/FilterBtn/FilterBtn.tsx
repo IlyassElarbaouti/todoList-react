@@ -15,7 +15,7 @@ const FilterBtn = ({
 }: Props) => {
   return (
     <button
-      onClick={() => onSetStatus(statusName)}
+      onClick={() => onSetStatus(statusValue)}
       className={`btn ${currentStatus === statusValue ? 'border' : null}`}
     >
       {statusName}

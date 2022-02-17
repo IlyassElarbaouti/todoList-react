@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { FormEvent, ChangeEvent, MouseEventHandler } from 'react'
 import { useState } from 'react'
-import { TodoItem } from '../../../../../types/TodoItem'
+import TodoItem from '../../../../types/TodoItem'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import './Todo.css'

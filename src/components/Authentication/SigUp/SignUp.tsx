@@ -12,7 +12,7 @@ import { RightDiv } from '../components/Right/Right'
 import { Title } from '../components/Title/Title'
 import { Container } from '../components/Container'
 import { useNavigate } from 'react-router-dom'
-import { apiSignUp } from '../../../../api/users'
+import { apiSignUp } from '../../../api/users'
 
 const SignUp = () => {
   const [email, setEmail] = useState('')

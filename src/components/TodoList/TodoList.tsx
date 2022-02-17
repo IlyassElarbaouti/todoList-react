@@ -5,7 +5,7 @@ import Filters from './Filters/Filters'
 import Form from './Form/Form'
 import Todos from './Todos/Todos'
 import './TodoList.css'
-import { TodoItem } from '../../../types/TodoItem'
+import TodoItem from '../../types/TodoItem'
 import {
   apiGetAllTodos,
   apiEditTodo,
@@ -13,9 +13,9 @@ import {
   apiToggleChecked,
   apiDeleteTodo,
   apiCreateTodo,
-} from '../../../api/todos'
+} from '../../api/todos'
 import Header from './Header/Header'
-import { apiLogout, apiRefresh } from '../../../api/users'
+import { apiLogout, apiRefresh } from '../../api/users'
 
 const TodoList = () => {
   useEffect(() => {
