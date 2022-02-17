@@ -13,7 +13,6 @@ export const apiGetAllTodos = () => {
 }
 
 export const apiEditTodo = (newTodo) => {
-  
   return axios.put(`${baseUrl}/update/${newTodo.id}`, newTodo, {
     headers,
   })
@@ -36,7 +35,7 @@ export const apiToggleChecked = () => {
 }
 
 export const apiDeleteTodo = (id) => {
-      console.log(id)
+  console.log(id)
   return axios.delete(`${baseUrl}/${id}`, {
     headers,
   })

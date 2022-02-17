@@ -1,7 +1,7 @@
-.header{
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-    background-color: #A69CAC;
-    padding: 10px 5%;
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #a69cac;
+  padding: 10px 5%;
 }

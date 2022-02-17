@@ -2,8 +2,8 @@ import * as React from 'react'
 import './Header.css'
 
 interface Props {
-    username: string
-    logout: () =>void
+  username: string
+  logout: () => void
 }
 
 const Header = ({ username, logout }: Props) => {

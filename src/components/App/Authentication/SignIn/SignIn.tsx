@@ -22,7 +22,7 @@ const SignIn = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    apiLogin(email,password,navigate)
+    apiLogin(email, password, navigate)
   }
 
   const handleEmailChange = (e: any) => {

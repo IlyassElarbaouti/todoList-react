@@ -45,7 +45,6 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
     setInputValue('')
   }
 
-
   return (
     <div onDoubleClick={handleDoubleClick} className="todo">
       <div

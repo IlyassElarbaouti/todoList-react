@@ -15,13 +15,12 @@ import { useNavigate } from 'react-router-dom'
 import { apiSignUp } from '../../../../apiService/usersApiService'
 
 const SignUp = () => {
-    let navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-    const handleSubmit = (event: any) => {
-        event.preventDefault()
-        apiSignUp(email,password)
+  const handleSubmit = (event: any) => {
+    event.preventDefault()
+    apiSignUp(email, password)
   }
 
   const handleEmailChange = (e: any) => {
@@ -61,7 +60,7 @@ const SignUp = () => {
             type="password"
             name="password"
           />
-          <Link to='/'>
+          <Link to="/">
             already have an account?
             <br />
             sign in
