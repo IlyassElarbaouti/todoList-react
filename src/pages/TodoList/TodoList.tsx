@@ -3,14 +3,14 @@ import { useState, useCallback, useEffect } from 'react'
 import './TodoList.css'
 import TodoItem from '../../types/TodoItem'
 import {
-  apiGetAllTodos,
-  apiEditTodo,
-  apiClearCompleted,
-  apiToggleChecked,
-  apiDeleteTodo,
-  apiCreateTodo,
+  fetchGetAllTodos,
+  fetchEditTodo,
+  fetchClearCompleted,
+  fetchToggleChecked,
+  fetchDeleteTodo,
+  fetchCreateTodo,
 } from '../../api/todos'
-import { apiLogout, apiRefresh } from '../../api/users'
+import { fetchLogout, fetchRefresh } from '../../api/users'
 import Header from '../../components/Header/Header'
 import Todos from '../../components/Todos/Todos'
 import Filters from '../../components/Filters/Filters'
@@ -18,7 +18,7 @@ import Form from '../../components/Form/Form'
 
 const TodoList = () => {
   useEffect(() => {
-    apiGetAllTodos()
+    fetchGetAllTodos()
       .then((res: any) => {
         setTodoList(res.data.todos)
         setNextId(res.data.nextId)
@@ -26,10 +26,10 @@ const TodoList = () => {
       .catch((e) => {
         const status = JSON.parse(JSON.stringify(e)).status
         if (status === 401) {
-          apiRefresh().then((response) => {
+          fetchRefresh().then((response) => {
             localStorage.setItem('token', response.data.accessToken)
             localStorage.setItem('refreshToken', response.data.refreshToken)
-            apiGetAllTodos()
+            fetchGetAllTodos()
           })
         }
       })
@@ -45,7 +45,7 @@ const TodoList = () => {
   )
 
   const editTodo = (newTodo: TodoItem) => {
-    apiEditTodo(newTodo).then((res) =>
+    fetchEditTodo(newTodo).then((res) =>
       setTodoList(
         todoList.map((todo) => (todo.id === newTodo.id ? res.data : todo))
       )
@@ -56,11 +56,11 @@ const TodoList = () => {
 
   const handleClearCompleted = useCallback(() => {
     setTodoList(todoList.filter((todo) => !todo.checked))
-    apiClearCompleted()
+    fetchClearCompleted()
   }, [todoList])
 
   const handleToggleChecked = useCallback(() => {
-    apiToggleChecked()
+    fetchToggleChecked()
       .then(() => {
         setTodoList(
           todoList.map((todo) => ({ ...todo, checked: !isAllChecked }))
@@ -71,7 +71,7 @@ const TodoList = () => {
 
   const handleDeleteTodo = (id: number) => {
     setTodoList(todoList.filter((todo) => todo.id !== id))
-    apiDeleteTodo(id).catch((e) => alert(e))
+    fetchDeleteTodo(id).catch((e) => alert(e))
   }
 
   const handleCreateTodo = useCallback(
@@ -79,14 +79,14 @@ const TodoList = () => {
       setTodoList([...todoList, { label, id: nextId, checked: false }])
       setNextId(nextId + 1)
 
-      apiCreateTodo(label).catch((e) => alert(e))
+      fetchCreateTodo(label).catch((e) => alert(e))
     },
 
     [todoList, nextId]
   )
 
   const handleLogout = () => {
-    apiLogout().then(() => {
+    fetchLogout().then(() => {
       localStorage.clear()
       location.reload()
     })

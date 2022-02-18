@@ -6,25 +6,25 @@ const headers = {
   Authorization: `token ${localStorage.getItem('token')}`,
 }
 
-export const apiGetAllTodos = () => {
+export const fetchGetAllTodos = () => {
   return axios.get(baseUrl, {
     headers,
   })
 }
 
-export const apiEditTodo = (newTodo) => {
+export const fetchEditTodo = (newTodo) => {
   return axios.put(`${baseUrl}/update/${newTodo.id}`, newTodo, {
     headers,
   })
 }
 
-export const apiClearCompleted = () => {
+export const fetchClearCompleted = () => {
   return axios.delete(baseUrl, {
     headers,
   })
 }
 
-export const apiToggleChecked = () => {
+export const fetchToggleChecked = () => {
   return axios.put(
     baseUrl,
     {},
@@ -34,13 +34,13 @@ export const apiToggleChecked = () => {
   )
 }
 
-export const apiDeleteTodo = (id) => {
+export const fetchDeleteTodo = (id) => {
   return axios.delete(`${baseUrl}/${id}`, {
     headers,
   })
 }
 
-export const apiCreateTodo = (label) => {
+export const fetchCreateTodo = (label) => {
   return axios.post(
     baseUrl,
     { label, checked: false },

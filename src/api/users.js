@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseUrl = 'http://localhost:9000'
 
-export const apiLogin = (email, password, navigate) => {
+export const fetchLogin = (email, password, navigate) => {
   return axios
     .post(`${baseUrl}/login`, {
       email,
@@ -31,7 +31,7 @@ export const apiLogin = (email, password, navigate) => {
     })
 }
 
-export const apiSignUp = (email, password, navigate) => {
+export const fetchSignUp = (email, password, navigate) => {
   return axios
     .post(`${baseUrl}/registration`, {
       email,
@@ -52,13 +52,13 @@ export const apiSignUp = (email, password, navigate) => {
     })
 }
 
-export const apiLogout = () => {
+export const fetchLogout = () => {
   return axios.post(`${baseUrl}/logout`, {
     refreshToken: localStorage.getItem('refreshToken'),
   })
 }
 
-export const apiRefresh = () => {
+export const fetchRefresh = () => {
   return axios.post(`${baseUrl}/refresh`, {
     refreshToken: localStorage.getItem('refreshToken'),
   })

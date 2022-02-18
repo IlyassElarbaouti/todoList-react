@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { apiLogin} from '../../api/users'
+import { fetchLogin} from '../../api/users'
 import SplitScreen from '../../components/SplitScreen/SplitScreen'
 import { useNavigate } from 'react-router-dom'
 import { Title } from '../../components/Title/Title'
@@ -21,7 +21,7 @@ const SignIn = (props: Props) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    apiLogin(email, password, navigate)
+    fetchLogin(email, password, navigate)
   }
 
   const handleEmailChange = (e: any) => {

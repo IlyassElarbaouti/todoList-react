@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { apiSignUp } from '../../api/users'
+import { fetchSignUp } from '../../api/users'
 import { AuthForm } from '../../components/AuthForm/AuthForm'
 import { Button } from '../../components/Button/Button'
 import { Description } from '../../components/Description.js/Description'
@@ -18,7 +18,7 @@ const SignUp = (props: Props) => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    apiSignUp(email, password)
+    fetchSignUp(email, password)
   }
 
   const handleEmailChange = (e: any) => {
