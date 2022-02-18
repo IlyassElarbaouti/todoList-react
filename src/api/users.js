@@ -58,8 +58,14 @@ export const fetchLogout = () => {
   })
 }
 
-export const fetchRefresh = () => {
+export const fetchRefresh = (previousRequest) => {
+  localStorage.clear()
   return axios.post(`${baseUrl}/refresh`, {
     refreshToken: localStorage.getItem('refreshToken'),
+  }).then(res => {
+    localStorage.setItem('token', res.data.accessToken)
+    localStorage.setItem('refreshToken', res.data.refreshsToken)
+  }).then(() => {
+      previousRequest()
   })
 }

@@ -20,7 +20,7 @@ const PageNotFound = (props: Props) => {
       rightPart={
         <>
           <Paragraph>
-            <Link to="/">back to sign in page</Link>
+            <Link to="/">back to home page</Link>
           </Paragraph>
         </>
       }

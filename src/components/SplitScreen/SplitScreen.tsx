@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container } from '../Container/Container'
+import { Container } from './Container'
 import { RightDiv,LeftDiv } from './Container'
 
 interface Props {
