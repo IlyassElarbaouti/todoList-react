@@ -1,6 +1,6 @@
 interface TodoItem {
-    id: number
-    label: string
-    checked: boolean
+  id: number;
+  label: string;
+  checked: boolean;
 }
-export default TodoItem
+export default TodoItem;

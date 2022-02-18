@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { fetchLogin } from '../../api/users';
 import SplitScreen from '../../components/SplitScreen/SplitScreen';
-import { Title } from '../../components/Title/Title';
-import { Input } from '../../components/Input/Input';
+import Title from '../../components/Title/Title';
+import Input from '../../components/Input/Input';
 import { Button } from '../../components/Button/Button';
 import { Description } from '../../components/Description.js/Description';
-import { Paragraph } from '../../components/Paragraph/Paragraph';
+import Paragraph from '../../components/Paragraph/Paragraph';
 import AuthForm from '../../components/AuthForm/AuthForm';
 
 const SignIn = () => {

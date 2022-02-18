@@ -5,10 +5,10 @@ import { fetchSignUp } from '../../api/users';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { Button } from '../../components/Button/Button';
 import { Description } from '../../components/Description.js/Description';
-import { Input } from '../../components/Input/Input';
-import { Paragraph } from '../../components/Paragraph/Paragraph';
+import Input from '../../components/Input/Input';
+import Paragraph from '../../components/Paragraph/Paragraph';
 import SplitScreen from '../../components/SplitScreen/SplitScreen';
-import { Title } from '../../components/Title/Title';
+import Title from '../../components/Title/Title';
 
 const SignUp = () => {
   const navigate = useNavigate();

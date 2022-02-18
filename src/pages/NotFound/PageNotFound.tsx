@@ -2,9 +2,9 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSadTear } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { Title } from '../../components/Title/Title';
+import Title from '../../components/Title/Title';
 import SplitScreen from '../../components/SplitScreen/SplitScreen';
-import { Paragraph } from '../../components/Paragraph/Paragraph';
+import Paragraph from '../../components/Paragraph/Paragraph';
 
 const PageNotFound = () => (
   <SplitScreen

@@ -16,6 +16,6 @@ const App = () => (
     <Route path="/activation" element={<Activation />} />
     <Route path="/*" element={<PageNotFound />} />
   </Routes>
-)
+);
 
 export default App;
