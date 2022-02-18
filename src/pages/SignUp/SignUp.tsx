@@ -9,16 +9,18 @@ import { Link } from 'react-router-dom'
 import { Paragraph } from '../../components/Paragraph/Paragraph'
 import SplitScreen from '../../components/SplitScreen/SplitScreen'
 import { Title } from '../../components/Title/Title'
+import { useNavigate } from 'react-router-dom'
 
 type Props = {}
 
 const SignUp = (props: Props) => {
+     let navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const handleSubmit = (event: any) => {
     event.preventDefault()
-    fetchSignUp(email, password)
+    fetchSignUp(email, password,navigate)
   }
 
   const handleEmailChange = (e: any) => {

@@ -94,7 +94,7 @@ const TodoList = () => {
     fetchDeleteTodo(id).catch((e) => {
       const status = JSON.parse(JSON.stringify(e)).status
       if (status === 401) {
-        fetchRefresh(fetchDeleteTodo)
+        fetchRefresh(fetchDeleteTodo(id))
       } else {
         alert('server error')
       }

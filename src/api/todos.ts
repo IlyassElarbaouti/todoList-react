@@ -1,4 +1,5 @@
 import axios from 'axios'
+import TodoItem from '../types/TodoItem'
 const baseUrl = 'http://localhost:9000/todos'
 
 const headers = {
@@ -12,7 +13,7 @@ export const fetchGetAllTodos = () => {
   })
 }
 
-export const fetchEditTodo = (newTodo) => {
+export const fetchEditTodo = (newTodo:TodoItem) => {
   return axios.put(`${baseUrl}/update/${newTodo.id}`, newTodo, {
     headers,
   })
@@ -34,13 +35,13 @@ export const fetchToggleChecked = () => {
   )
 }
 
-export const fetchDeleteTodo = (id) => {
+export const fetchDeleteTodo = (id:number) => {
   return axios.delete(`${baseUrl}/${id}`, {
     headers,
   })
 }
 
-export const fetchCreateTodo = (label) => {
+export const fetchCreateTodo = (label:string) => {
   return axios.post(
     baseUrl,
     { label, checked: false },

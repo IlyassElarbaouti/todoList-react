@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const baseUrl = 'http://localhost:9000'
 
-export const fetchLogin = (email, password, navigate) => {
+export const fetchLogin = (email:string, password:string, navigate:(link:string)=>void) => {
   return axios
     .post(`${baseUrl}/login`, {
       email,
@@ -31,7 +31,7 @@ export const fetchLogin = (email, password, navigate) => {
     })
 }
 
-export const fetchSignUp = (email, password, navigate) => {
+export const fetchSignUp = (email:string, password:string, navigate:(link:string)=>void) => {
   return axios
     .post(`${baseUrl}/registration`, {
       email,
@@ -58,7 +58,7 @@ export const fetchLogout = () => {
   })
 }
 
-export const fetchRefresh = (previousRequest) => {
+export const fetchRefresh = (previousRequest:any) => {
   localStorage.clear()
   return axios.post(`${baseUrl}/refresh`, {
     refreshToken: localStorage.getItem('refreshToken'),
