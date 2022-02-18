@@ -26,7 +26,7 @@ export const fetchLogin = (
     .catch((e) => {
       const res = JSON.parse(JSON.stringify(e));
 
-      if (res.status === 400) {
+      if (res.status === 400 || 404) {
         alert('email or password are incorrect');
       } else {
         alert('server error');
