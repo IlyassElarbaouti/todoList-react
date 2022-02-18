@@ -1,9 +1,5 @@
 import * as React from 'react'
 import { useState, useCallback, useEffect } from 'react'
-
-import Filters from './Filters/Filters'
-import Form from './Form/Form'
-import Todos from './Todos/Todos'
 import './TodoList.css'
 import TodoItem from '../../types/TodoItem'
 import {
@@ -14,8 +10,11 @@ import {
   apiDeleteTodo,
   apiCreateTodo,
 } from '../../api/todos'
-import Header from './Header/Header'
 import { apiLogout, apiRefresh } from '../../api/users'
+import Header from '../../components/Header/Header'
+import Todos from '../../components/Todos/Todos'
+import Filters from '../../components/Filters/Filters'
+import Form from '../../components/Form/Form'
 
 const TodoList = () => {
   useEffect(() => {
