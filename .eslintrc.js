@@ -1,5 +1,3 @@
-const { isNativeError } = require('util/types');
-
 module.exports = {
   env: {
     browser: true,
@@ -9,10 +7,10 @@ module.exports = {
   extends: [
     'airbnb-base',
     'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
   ],
+  plugins: ['react', 'prettier'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react', '@typescript-eslint'],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -22,8 +20,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'no-unused-vars': 'off',
-    '@typescript-eslint/rule-name': 'error',
+    'prettier/prettier': 'error',
     'import/extensions': ['error', 'never'],
   },
 };

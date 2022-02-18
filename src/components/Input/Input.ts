@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 export const Input = styled.input`
   cursor: pointer;
   border: none;
@@ -6,4 +6,4 @@ export const Input = styled.input`
   height: 40px;
   padding: 10px;
   font-size: 16px;
-`
+`;

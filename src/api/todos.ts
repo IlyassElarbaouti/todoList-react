@@ -8,34 +8,40 @@ const headers = {
   Authorization: `token ${localStorage.getItem('token')}`,
 };
 
-export const fetchGetAllTodos = () => axios.get(baseUrl, {
-  headers,
-});
-
-export const fetchEditTodo = (newTodo: TodoItem) => axios.put(`${baseUrl}/update/${newTodo.id}`, newTodo, {
-  headers,
-});
-
-export const fetchClearCompleted = () => axios.delete(baseUrl, {
-  headers,
-});
-
-export const fetchToggleChecked = () => axios.put(
-  baseUrl,
-  {},
-  {
+export const fetchGetAllTodos = () =>
+  axios.get(baseUrl, {
     headers,
-  },
-);
+  });
 
-export const fetchDeleteTodo = (id: number) => axios.delete(`${baseUrl}/${id}`, {
-  headers,
-});
-
-export const fetchCreateTodo = (label: string) => axios.post(
-  baseUrl,
-  { label, checked: false },
-  {
+export const fetchEditTodo = (newTodo: TodoItem) =>
+  axios.put(`${baseUrl}/update/${newTodo.id}`, newTodo, {
     headers,
-  },
-);
+  });
+
+export const fetchClearCompleted = () =>
+  axios.delete(baseUrl, {
+    headers,
+  });
+
+export const fetchToggleChecked = () =>
+  axios.put(
+    baseUrl,
+    {},
+    {
+      headers,
+    }
+  );
+
+export const fetchDeleteTodo = (id: number) =>
+  axios.delete(`${baseUrl}/${id}`, {
+    headers,
+  });
+
+export const fetchCreateTodo = (label: string) =>
+  axios.post(
+    baseUrl,
+    { label, checked: false },
+    {
+      headers,
+    }
+  );

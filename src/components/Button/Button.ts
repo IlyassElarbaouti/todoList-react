@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 export const Button = styled.button`
   cursor: pointer;
   height: 3rem;
@@ -14,4 +14,4 @@ export const Button = styled.button`
     background-color: #e83128;
     color: white;
   }
-`
+`;

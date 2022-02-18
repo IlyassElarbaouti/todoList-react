@@ -7,21 +7,21 @@ import SplitScreen from '../../components/SplitScreen/SplitScreen';
 import { Paragraph } from '../../components/Paragraph/Paragraph';
 
 const PageNotFound = () => (
-    <SplitScreen
-      leftPart={
-        <>
-          <FontAwesomeIcon style={{ fontSize: '50px' }} icon={faSadTear} />
-          <Title>Page not found </Title>
-        </>
-      }
-      rightPart={
-        <>
-          <Paragraph>
-            <Link to="/">back to home page</Link>
-          </Paragraph>
-        </>
-      }
-    />
+  <SplitScreen
+    leftPart={
+      <>
+        <FontAwesomeIcon style={{ fontSize: '50px' }} icon={faSadTear} />
+        <Title>Page not found </Title>
+      </>
+    }
+    rightPart={
+      <>
+        <Paragraph>
+          <Link to="/">back to home page</Link>
+        </Paragraph>
+      </>
+    }
+  />
 );
 
 export default PageNotFound;
