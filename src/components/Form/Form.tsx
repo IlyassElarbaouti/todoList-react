@@ -5,9 +5,9 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import * as React from 'react';
 
 interface Props {
-  onCreateTodo: (value: string) => void
-  onToggleChecked: () => void
-  isAllChecked: boolean
+  onCreateTodo: (value: string) => void;
+  onToggleChecked: () => void;
+  isAllChecked: boolean;
 }
 
 const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {

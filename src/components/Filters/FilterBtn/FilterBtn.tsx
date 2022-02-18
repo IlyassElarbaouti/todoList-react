@@ -13,11 +13,11 @@ const FilterBtn = ({
   statusName,
   statusValue,
 }: Props) => (
-    <button
-      onClick={() => onSetStatus(statusValue)}
-      className={`btn ${currentStatus === statusValue ? 'border' : null}`}
-    >
-      {statusName}
-    </button>
+  <button
+    onClick={() => onSetStatus(statusValue)}
+    className={`btn ${currentStatus === statusValue ? 'border' : null}`}
+  >
+    {statusName}
+  </button>
 );
 export default React.memo(FilterBtn);

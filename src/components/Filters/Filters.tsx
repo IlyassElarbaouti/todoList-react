@@ -1,14 +1,14 @@
-import * as React from 'react'
-import allStatus from '../../constants/allStatus'
-import './Filters.css'
-import TodoItem from '../../types/TodoItem'
-import FilterBtn from './FilterBtn/FilterBtn'
+import * as React from 'react';
+import allStatus from '../../constants/allStatus';
+import './Filters.css';
+import TodoItem from '../../types/TodoItem';
+import FilterBtn from './FilterBtn/FilterBtn';
 
 interface Props {
-  todoList: Array<TodoItem>
-  onSetStatus: (status: string) => void
-  currentStatus: string
-  onClearCompleted: () => void
+  todoList: Array<TodoItem>;
+  onSetStatus: (status: string) => void;
+  currentStatus: string;
+  onClearCompleted: () => void;
 }
 
 const Filters = ({
@@ -17,8 +17,8 @@ const Filters = ({
   currentStatus,
   onClearCompleted,
 }: Props) => {
-  const activeTodosCount = todoList.filter((todo) => !todo.checked).length
-  const completedTodosExist = todoList.some((todo) => todo.checked)
+  const activeTodosCount = todoList.filter((todo) => !todo.checked).length;
+  const completedTodosExist = todoList.some((todo) => todo.checked);
 
   return (
     <div className="filters__container">
@@ -46,7 +46,7 @@ const Filters = ({
         <div className="overlay2 overlay"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(Filters)
+export default React.memo(Filters);

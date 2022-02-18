@@ -21,6 +21,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'import/extensions': ['error', 'never'],
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+    'no-unused-vars': 'off',
   },
 };

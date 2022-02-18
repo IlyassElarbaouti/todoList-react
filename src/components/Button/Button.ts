@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 export const Button = styled.button`
   cursor: pointer;
   height: 3rem;
@@ -15,3 +16,4 @@ export const Button = styled.button`
     color: white;
   }
 `;
+export default Button;
