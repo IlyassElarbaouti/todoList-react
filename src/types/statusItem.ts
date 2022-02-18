@@ -3,4 +3,4 @@
     value:string
  }
 
- export default statusItem
+export default statusItem;

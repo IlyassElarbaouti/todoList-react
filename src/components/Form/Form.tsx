@@ -1,8 +1,8 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
-import './Form.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import * as React from 'react'
+import { ChangeEvent, FormEvent, useState } from 'react';
+import './Form.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import * as React from 'react';
 
 interface Props {
   onCreateTodo: (value: string) => void
@@ -11,21 +11,21 @@ interface Props {
 }
 
 const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('');
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value)
-  }
+    setValue(event.target.value);
+  };
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
+    event.preventDefault();
     if (value.trim() === '') {
-      setValue('')
-      return
+      setValue('');
+      return;
     }
-    onCreateTodo(value)
-    setValue('')
-  }
+    onCreateTodo(value);
+    setValue('');
+  };
 
   return (
     <div className="form__container">
@@ -44,7 +44,7 @@ const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
         />
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(Form)
+export default React.memo(Form);

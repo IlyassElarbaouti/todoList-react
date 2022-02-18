@@ -1,35 +1,32 @@
-import * as React from 'react'
-import { useState } from 'react'
-import { fetchSignUp } from '../../api/users'
-import { AuthForm } from '../../components/AuthForm/AuthForm'
-import { Button } from '../../components/Button/Button'
-import { Description } from '../../components/Description.js/Description'
-import { Input } from '../../components/Input/Input'
-import { Link } from 'react-router-dom'
-import { Paragraph } from '../../components/Paragraph/Paragraph'
-import SplitScreen from '../../components/SplitScreen/SplitScreen'
-import { Title } from '../../components/Title/Title'
-import { useNavigate } from 'react-router-dom'
+import * as React from 'react';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { fetchSignUp } from '../../api/users';
+import AuthForm from '../../components/AuthForm/AuthForm';
+import { Button } from '../../components/Button/Button';
+import { Description } from '../../components/Description.js/Description';
+import { Input } from '../../components/Input/Input';
+import { Paragraph } from '../../components/Paragraph/Paragraph';
+import SplitScreen from '../../components/SplitScreen/SplitScreen';
+import { Title } from '../../components/Title/Title';
 
-type Props = {}
-
-const SignUp = (props: Props) => {
-     let navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+const SignUp = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (event: any) => {
-    event.preventDefault()
-    fetchSignUp(email, password,navigate)
-  }
+    event.preventDefault();
+    fetchSignUp(email, password, navigate);
+  };
 
   const handleEmailChange = (e: any) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const handlePasswordChange = (e: any) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
   return (
     <SplitScreen
       leftPart={
@@ -71,7 +68,7 @@ const SignUp = (props: Props) => {
         </>
       }
     />
-  )
-}
+  );
+};
 
-export default SignUp
+export default SignUp;

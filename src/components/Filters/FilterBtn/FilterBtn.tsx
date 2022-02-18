@@ -1,10 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
 interface Props {
-  onSetStatus: (status: string) => void
-  currentStatus: string
-  statusName: string
-  statusValue: string
+  currentStatus: string;
+  statusName: string;
+  statusValue: string;
+  onSetStatus: (statusValue: string) => void;
 }
 
 const FilterBtn = ({
@@ -12,14 +12,12 @@ const FilterBtn = ({
   currentStatus,
   statusName,
   statusValue,
-}: Props) => {
-  return (
+}: Props) => (
     <button
       onClick={() => onSetStatus(statusValue)}
       className={`btn ${currentStatus === statusValue ? 'border' : null}`}
     >
       {statusName}
     </button>
-  )
-}
-export default React.memo(FilterBtn)
+);
+export default React.memo(FilterBtn);

@@ -1,4 +1,5 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+
 export const Container = styled.div`
   color: #0d0c1d;
   min-height: 400px;
@@ -9,7 +10,7 @@ export const Container = styled.div`
   display: flex;
   border: 1px solid #bfbfbf;
   box-shadow: 0px 0px 25px 3px rgba(49, 49, 49, 0.2);
-`
+`;
 
 export const RightDiv = styled.div`
   background-color: #a69cac;
@@ -17,7 +18,7 @@ export const RightDiv = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 
 export const LeftDiv = styled.div`
   width: 45%;
@@ -28,4 +29,4 @@ export const LeftDiv = styled.div`
   align-items: center;
   flex-direction: column;
   padding: 0 10px;
-`
+`;

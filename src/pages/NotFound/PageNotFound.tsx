@@ -1,15 +1,12 @@
-import * as React from 'react'
-import SplitScreen from '../../components/SplitScreen/SplitScreen'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSadTear } from '@fortawesome/free-solid-svg-icons'
-import { Title } from '../../components/Title/Title'
-import { Link } from 'react-router-dom'
-import { Paragraph } from '../../components/Paragraph/Paragraph'
+import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSadTear } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+import { Title } from '../../components/Title/Title';
+import SplitScreen from '../../components/SplitScreen/SplitScreen';
+import { Paragraph } from '../../components/Paragraph/Paragraph';
 
-type Props = {}
-
-const PageNotFound = (props: Props) => {
-  return (
+const PageNotFound = () => (
     <SplitScreen
       leftPart={
         <>
@@ -25,7 +22,6 @@ const PageNotFound = (props: Props) => {
         </>
       }
     />
-  )
-}
+);
 
-export default PageNotFound
+export default PageNotFound;

@@ -1,36 +1,33 @@
-import * as React from 'react'
-import { useState } from 'react'
-import { fetchLogin} from '../../api/users'
-import SplitScreen from '../../components/SplitScreen/SplitScreen'
-import { useNavigate } from 'react-router-dom'
-import { Title } from '../../components/Title/Title'
-import {Link} from 'react-router-dom'
-import { Input } from '../../components/Input/Input'
-import { Button } from '../../components/Button/Button'
-import { Description } from '../../components/Description.js/Description'
-import { Paragraph } from '../../components/Paragraph/Paragraph'
-import { AuthForm } from '../../components/AuthForm/AuthForm'
+import * as React from 'react';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+import { fetchLogin } from '../../api/users';
+import SplitScreen from '../../components/SplitScreen/SplitScreen';
+import { Title } from '../../components/Title/Title';
+import { Input } from '../../components/Input/Input';
+import { Button } from '../../components/Button/Button';
+import { Description } from '../../components/Description.js/Description';
+import { Paragraph } from '../../components/Paragraph/Paragraph';
+import AuthForm from '../../components/AuthForm/AuthForm';
 
-type Props = {}
+const SignIn = () => {
+  const navigate = useNavigate();
 
-const SignIn = (props: Props) => {
-  let navigate = useNavigate()
-
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (event: any) => {
-    event.preventDefault()
-    fetchLogin(email, password, navigate)
-  }
+    event.preventDefault();
+    fetchLogin(email, password, navigate);
+  };
 
   const handleEmailChange = (e: any) => {
-    setEmail(e.target.value)
-  }
+    setEmail(e.target.value);
+  };
 
   const handlePasswordChange = (e: any) => {
-    setPassword(e.target.value)
-  }
+    setPassword(e.target.value);
+  };
   return (
     <SplitScreen
       leftPart={
@@ -61,7 +58,7 @@ const SignIn = (props: Props) => {
               name="password"
             />
             <Link to="/sign-up">
-              don't have an account?
+              {"don't have an account?"}
               <br />
               sign up
             </Link>
@@ -70,7 +67,7 @@ const SignIn = (props: Props) => {
         </>
       }
     />
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;
