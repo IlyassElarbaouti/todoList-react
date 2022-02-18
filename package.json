@@ -3,22 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "./src/index.tsx",
-  "scripts": {
-    "start": "webpack serve --mode=development ",
-    "build": "webpack",
-    "prepare": "cd .. && husky install client/.husky",
-    "lint": "eslint ./src"
-  },
+  
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "**/*.ts?x": [
+    "**/*.js": [
       "eslint --fix",
       "git add"
     ]
+  },
+  "scripts": {
+    "start": "webpack serve --mode=development ",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
