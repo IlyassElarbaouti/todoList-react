@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:9000';
+const baseUrl = process.env.BASE_URL;
 
 export const fetchLogin = (
   email: string,

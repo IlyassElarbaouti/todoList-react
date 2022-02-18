@@ -28,6 +28,7 @@ const SignIn = () => {
   const handlePasswordChange = (e: any) => {
     setPassword(e.target.value);
   };
+
   return (
     <SplitScreen
       leftPart={

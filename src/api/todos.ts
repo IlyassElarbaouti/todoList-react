@@ -1,7 +1,7 @@
 import axios from 'axios';
 import TodoItem from '../types/TodoItem';
 
-const baseUrlTodos = 'http://localhost:9000/todos';
+const baseUrl = process.env.BASE_URL;
 
 const headers = {
   'Content-Type': 'application/json',
@@ -9,23 +9,23 @@ const headers = {
 };
 
 export const fetchGetAllTodos = () =>
-  axios.get(baseUrlTodos, {
+  axios.get(`${baseUrl}/todos`, {
     headers,
   });
 
 export const fetchEditTodo = (newTodo: TodoItem) =>
-  axios.put(`${baseUrlTodos}/update/${newTodo.id}`, newTodo, {
+  axios.put(`${baseUrl}/todos/update/${newTodo.id}`, newTodo, {
     headers,
   });
 
 export const fetchClearCompleted = () =>
-  axios.delete(baseUrlTodos, {
+  axios.delete(`${baseUrl}/todos`, {
     headers,
   });
 
 export const fetchToggleChecked = () =>
   axios.put(
-    baseUrlTodos,
+    `${baseUrl}/todos`,
     {},
     {
       headers,
@@ -33,13 +33,13 @@ export const fetchToggleChecked = () =>
   );
 
 export const fetchDeleteTodo = (id: number) =>
-  axios.delete(`${baseUrlTodos}/${id}`, {
+  axios.delete(`${baseUrl}/todos/${id}`, {
     headers,
   });
 
 export const fetchCreateTodo = (label: string) =>
   axios.post(
-    baseUrlTodos,
+    `${baseUrl}/todos`,
     { label, checked: false },
     {
       headers,
