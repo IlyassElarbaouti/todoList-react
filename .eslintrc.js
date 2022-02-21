@@ -20,6 +20,7 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
+    'no-console': 'off',
     'prettier/prettier': 'error',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',

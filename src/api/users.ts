@@ -30,15 +30,12 @@ export const fetchRefresh = () => {
     });
 };
 
-const UNAUTHORIZED = 401;
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
     const { status } = error.response;
-    if (status === UNAUTHORIZED) {
+    if (status === 401) {
       fetchRefresh();
-    } else {
-      console.error(error.message);
     }
   }
 );

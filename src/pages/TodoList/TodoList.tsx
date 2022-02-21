@@ -1,6 +1,11 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import './TodoList.css';
 import TodoItem from '../../types/TodoItem';
+import { fetchLogout } from '../../api/users';
+import Header from '../../components/TodoList/Header/Header';
+import Todos from '../../components/TodoList/Todos/Todos';
+import Filters from '../../components/TodoList/Filters/Filters';
+import Form from '../../components/TodoList/Form/Form';
 import {
   fetchGetAllTodos,
   fetchEditTodo,
@@ -9,11 +14,6 @@ import {
   fetchDeleteTodo,
   fetchCreateTodo,
 } from '../../api/todos';
-import { fetchLogout, fetchRefresh } from '../../api/users';
-import Header from '../../components/TodoList/Header/Header';
-import Todos from '../../components/TodoList/Todos/Todos';
-import Filters from '../../components/TodoList/Filters/Filters';
-import Form from '../../components/TodoList/Form/Form';
 
 const TodoList = () => {
   const [currentStatus, setCurrentStatus] = useState('all');
@@ -21,10 +21,14 @@ const TodoList = () => {
   const [nextId, setNextId] = useState(0);
 
   useEffect(() => {
-    fetchGetAllTodos().then((res: any) => {
-      setTodoList(res.data.todos);
-      setNextId(res.data.nextId);
-    });
+    fetchGetAllTodos()
+      .then((res: any) => {
+        setTodoList(res.data.todos);
+        setNextId(res.data.nextId);
+      })
+      .catch((error) => {
+        console.error('get all todos', error);
+      });
   }, []);
 
   const handleEditStatus = useCallback(
@@ -33,50 +37,74 @@ const TodoList = () => {
   );
 
   const editTodo = (newTodo: TodoItem) => {
-    fetchEditTodo(newTodo).then((res) =>
-      setTodoList(
-        todoList.map((todo) => (todo.id === res.data.id ? res.data : todo))
+    fetchEditTodo(newTodo)
+      .then((res) =>
+        setTodoList(
+          todoList.map((todo) => (todo.id === res.data.id ? res.data : todo))
+        )
       )
-    );
+      .catch((error) => {
+        console.error('edit todo', error);
+      });
   };
 
   const isAllChecked = todoList.every((todo) => todo.checked);
 
   const handleClearCompleted = useCallback(() => {
-    fetchClearCompleted().then(() => {
-      setTodoList(todoList.filter((todo) => !todo.checked));
-    });
+    fetchClearCompleted()
+      .then(() => {
+        setTodoList(todoList.filter((todo) => !todo.checked));
+      })
+      .catch((error) => {
+        console.error('Clear Completed', error);
+      });
   }, [todoList]);
 
   const handleToggleChecked = useCallback(() => {
-    fetchToggleChecked().then(() => {
-      setTodoList(
-        todoList.map((todo) => ({ ...todo, checked: !isAllChecked }))
-      );
-    });
+    fetchToggleChecked()
+      .then(() => {
+        setTodoList(
+          todoList.map((todo) => ({ ...todo, checked: !isAllChecked }))
+        );
+      })
+      .catch((error) => {
+        console.error('handle Toggle Checked', error);
+      });
   }, [todoList, isAllChecked]);
 
   const handleDeleteTodo = (id: number) => {
-    fetchDeleteTodo(id).then(() => {
-      setTodoList(todoList.filter((todo) => todo.id !== id));
-    });
+    fetchDeleteTodo(id)
+      .then(() => {
+        setTodoList(todoList.filter((todo) => todo.id !== id));
+      })
+      .catch((error) => {
+        console.error('Delete Todo', error);
+      });
   };
 
   const handleCreateTodo = useCallback(
     (label: string) => {
-      fetchCreateTodo(label).then(() => {
-        setTodoList([...todoList, { label, id: nextId, checked: false }]);
-        setNextId(nextId + 1);
-      });
+      fetchCreateTodo(label)
+        .then(() => {
+          setTodoList([...todoList, { label, id: nextId, checked: false }]);
+          setNextId(nextId + 1);
+        })
+        .catch((error) => {
+          console.error('Create Todo', error);
+        });
     },
     [todoList, nextId]
   );
 
   const handleLogout = () => {
-    fetchLogout().then(() => {
-      localStorage.clear();
-      window.location.reload();
-    });
+    fetchLogout()
+      .then(() => {
+        localStorage.clear();
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error('logout', error);
+      });
   };
 
   return (
