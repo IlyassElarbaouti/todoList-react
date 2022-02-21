@@ -18,7 +18,11 @@ const SignUp = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    fetchSignUp(email, password).then(() => navigate('/'));
+    fetchSignUp(email, password)
+      .then(() => navigate('/'))
+      .catch((error) => {
+        console.error('sign up', error);
+      });
   };
 
   const handleEmailChange = (e: any) => {
