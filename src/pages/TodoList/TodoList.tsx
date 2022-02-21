@@ -21,19 +21,10 @@ const TodoList = () => {
   const [nextId, setNextId] = useState(0);
 
   useEffect(() => {
-    fetchGetAllTodos()
-      .then((res: any) => {
-        setTodoList(res.data.todos);
-        setNextId(res.data.nextId);
-      })
-      .catch((e) => {
-        const { status } = JSON.parse(JSON.stringify(e));
-        if (status === 401) {
-          fetchRefresh(fetchGetAllTodos);
-        } else {
-          console.error('server error');
-        }
-      });
+    fetchGetAllTodos().then((res: any) => {
+      setTodoList(res.data.todos);
+      setNextId(res.data.nextId);
+    });
   }, []);
 
   const handleEditStatus = useCallback(
@@ -42,86 +33,41 @@ const TodoList = () => {
   );
 
   const editTodo = (newTodo: TodoItem) => {
-    fetchEditTodo(newTodo)
-      .then((res) =>
-        setTodoList(
-          todoList.map((todo) => (todo.id === res.data.id ? res.data : todo))
-        )
+    fetchEditTodo(newTodo).then((res) =>
+      setTodoList(
+        todoList.map((todo) => (todo.id === res.data.id ? res.data : todo))
       )
-      .catch((e) => {
-        const { status } = JSON.parse(JSON.stringify(e));
-        if (status === 401) {
-          fetchRefresh(fetchEditTodo);
-        } else {
-          console.error('server error');
-        }
-      });
+    );
   };
 
   const isAllChecked = todoList.every((todo) => todo.checked);
 
   const handleClearCompleted = useCallback(() => {
-    fetchClearCompleted()
-      .then(() => {
-        setTodoList(todoList.filter((todo) => !todo.checked));
-      })
-      .catch((e) => {
-        const { status } = JSON.parse(JSON.stringify(e));
-        if (status === 401) {
-          fetchRefresh(fetchClearCompleted);
-        } else {
-          console.error('server error');
-        }
-      });
+    fetchClearCompleted().then(() => {
+      setTodoList(todoList.filter((todo) => !todo.checked));
+    });
   }, [todoList]);
 
   const handleToggleChecked = useCallback(() => {
-    fetchToggleChecked()
-      .then(() => {
-        setTodoList(
-          todoList.map((todo) => ({ ...todo, checked: !isAllChecked }))
-        );
-      })
-      .catch((e) => {
-        const { status } = JSON.parse(JSON.stringify(e));
-        if (status === 401) {
-          fetchRefresh(fetchToggleChecked);
-        } else {
-          console.error('server error');
-        }
-      });
+    fetchToggleChecked().then(() => {
+      setTodoList(
+        todoList.map((todo) => ({ ...todo, checked: !isAllChecked }))
+      );
+    });
   }, [todoList, isAllChecked]);
 
   const handleDeleteTodo = (id: number) => {
-    fetchDeleteTodo(id)
-      .then(() => {
-        setTodoList(todoList.filter((todo) => todo.id !== id));
-      })
-      .catch((e) => {
-        const { status } = JSON.parse(JSON.stringify(e));
-        if (status === 401) {
-          fetchRefresh(() => fetchDeleteTodo(id));
-        } else {
-          console.error('server error');
-        }
-      });
+    fetchDeleteTodo(id).then(() => {
+      setTodoList(todoList.filter((todo) => todo.id !== id));
+    });
   };
 
   const handleCreateTodo = useCallback(
     (label: string) => {
-      fetchCreateTodo(label)
-        .then(() => {
-          setTodoList([...todoList, { label, id: nextId, checked: false }]);
-          setNextId(nextId + 1);
-        })
-        .catch((e) => {
-          const { status } = JSON.parse(JSON.stringify(e));
-          if (status === 401) {
-            fetchRefresh(fetchCreateTodo);
-          } else {
-            console.error('server error');
-          }
-        });
+      fetchCreateTodo(label).then(() => {
+        setTodoList([...todoList, { label, id: nextId, checked: false }]);
+        setNextId(nextId + 1);
+      });
     },
     [todoList, nextId]
   );

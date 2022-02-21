@@ -18,15 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    fetchSignUp(email, password, navigate).catch((e) => {
-      const res = JSON.parse(JSON.stringify(e));
-
-      if (res.status === 400) {
-        navigate('/');
-        return console.error('user already exists');
-      }
-      return console.error('server error');
-    });
+    fetchSignUp(email, password, navigate);
   };
 
   const handleEmailChange = (e: any) => {

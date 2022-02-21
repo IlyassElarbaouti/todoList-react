@@ -19,15 +19,7 @@ const SignIn = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    fetchLogin(email, password, navigate).catch((e) => {
-      const res = JSON.parse(JSON.stringify(e));
-
-      if (res.status === (400 || 404)) {
-        console.error('email or password are incorrect');
-      } else {
-        console.error('server error');
-      }
-    });
+    fetchLogin(email, password, navigate);
   };
 
   const handleEmailChange = (e: any) => {

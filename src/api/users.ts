@@ -41,11 +41,7 @@ export const fetchLogout = () =>
     refreshToken: localStorage.getItem('refreshToken'),
   });
 
-export const fetchRefresh = (
-  previousRequest: (
-    param?: string | TodoItem | number
-  ) => Promise<AxiosResponse<any, any>>
-) => {
+export const fetchRefresh = () => {
   localStorage.clear();
   return axios
     .post(`${baseUrl}/refresh`, {
@@ -54,6 +50,24 @@ export const fetchRefresh = (
     .then((res) => {
       localStorage.setItem('token', res.data.accessToken);
       localStorage.setItem('refreshToken', res.data.refreshsToken);
-      previousRequest();
     });
 };
+
+const UNAUTHORIZED = 401;
+const NOTFOUND = 404;
+const BADREQUEST = 400;
+axios.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    const { status } = error.response;
+    if (status === UNAUTHORIZED) {
+      fetchRefresh();
+    } else if (status === NOTFOUND) {
+      console.error('not found');
+    } else if (status === BADREQUEST) {
+      console.error('bad request');
+    } else {
+      console.error('server error');
+    }
+  }
+);
