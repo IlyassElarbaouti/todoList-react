@@ -1,14 +1,15 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { fetchSignUp } from '../../api/users';
-import AuthForm from '../../components/AuthForm/AuthForm';
-import { Button } from '../../components/Button/Button';
-import { Description } from '../../components/Description.js/Description';
-import Input from '../../components/Input/Input';
-import Paragraph from '../../components/Paragraph/Paragraph';
+import {
+  AuthForm,
+  Input,
+  Button,
+} from '../../components/SplitScreen/AuthForm/AuthForm';
+import { Description } from '../../components/SplitScreen/Description.js/Description';
+import Paragraph from '../../components/SplitScreen/Paragraph/Paragraph';
 import SplitScreen from '../../components/SplitScreen/SplitScreen';
-import Title from '../../components/Title/Title';
+import Title from '../../components/SplitScreen/Title/Title';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -17,7 +18,15 @@ const SignUp = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    fetchSignUp(email, password, navigate);
+    fetchSignUp(email, password, navigate).catch((e) => {
+      const res = JSON.parse(JSON.stringify(e));
+
+      if (res.status === 400) {
+        navigate('/');
+        return alert('user already exists');
+      }
+      return alert('server error');
+    });
   };
 
   const handleEmailChange = (e: any) => {

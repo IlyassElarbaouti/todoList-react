@@ -1,8 +1,7 @@
-import * as React from 'react';
-import { FormEvent, ChangeEvent, useState } from 'react';
+import React, { FormEvent, ChangeEvent, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import TodoItem from '../../../types/TodoItem';
+import TodoItem from '../../../../types/TodoItem';
 import './Todo.css';
 
 interface Props {

@@ -1,7 +1,7 @@
-import * as React from 'react';
-import allStatus from '../../constants/allStatus';
+import React from 'react';
+import allStatus from '../../../constants/allStatus';
 import './Filters.css';
-import TodoItem from '../../types/TodoItem';
+import TodoItem from '../../../types/TodoItem';
 import FilterBtn from './FilterBtn/FilterBtn';
 
 interface Props {

@@ -1,6 +1,6 @@
-import axios from 'axios';
-
-const baseUrl = process.env.BASE_URL;
+import axios, { AxiosResponse } from 'axios';
+import TodoItem from '../types/TodoItem';
+import { baseUrl } from './todos';
 
 export const fetchLogin = (
   email: string,
@@ -22,15 +22,6 @@ export const fetchLogin = (
         return navigate('/activation');
       }
       return navigate('/notfound');
-    })
-    .catch((e) => {
-      const res = JSON.parse(JSON.stringify(e));
-
-      if (res.status === 400 || 404) {
-        alert('email or password are incorrect');
-      } else {
-        alert('server error');
-      }
     });
 
 export const fetchSignUp = (
@@ -43,23 +34,18 @@ export const fetchSignUp = (
       email,
       password,
     })
-    .then(() => navigate('/'))
-    .catch((e) => {
-      const res = JSON.parse(JSON.stringify(e));
-
-      if (res.status === 400) {
-        navigate('/');
-        return alert('user already exists');
-      }
-      return alert('server error');
-    });
+    .then(() => navigate('/'));
 
 export const fetchLogout = () =>
   axios.post(`${baseUrl}/logout`, {
     refreshToken: localStorage.getItem('refreshToken'),
   });
 
-export const fetchRefresh = (previousRequest: any) => {
+export const fetchRefresh = (
+  previousRequest: (
+    param?: string | TodoItem | number
+  ) => Promise<AxiosResponse<any, any>>
+) => {
   localStorage.clear();
   return axios
     .post(`${baseUrl}/refresh`, {
@@ -68,8 +54,6 @@ export const fetchRefresh = (previousRequest: any) => {
     .then((res) => {
       localStorage.setItem('token', res.data.accessToken);
       localStorage.setItem('refreshToken', res.data.refreshsToken);
-    })
-    .then(() => {
       previousRequest();
     });
 };

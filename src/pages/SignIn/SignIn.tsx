@@ -1,14 +1,15 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { fetchLogin } from '../../api/users';
 import SplitScreen from '../../components/SplitScreen/SplitScreen';
-import Title from '../../components/Title/Title';
-import Input from '../../components/Input/Input';
-import { Button } from '../../components/Button/Button';
-import { Description } from '../../components/Description.js/Description';
-import Paragraph from '../../components/Paragraph/Paragraph';
-import AuthForm from '../../components/AuthForm/AuthForm';
+import Title from '../../components/SplitScreen/Title/Title';
+import { Description } from '../../components/SplitScreen/Description.js/Description';
+import Paragraph from '../../components/SplitScreen/Paragraph/Paragraph';
+import {
+  AuthForm,
+  Input,
+  Button,
+} from '../../components/SplitScreen/AuthForm/AuthForm';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -18,7 +19,15 @@ const SignIn = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    fetchLogin(email, password, navigate);
+    fetchLogin(email, password, navigate).catch((e) => {
+      const res = JSON.parse(JSON.stringify(e));
+
+      if (res.status === (400 || 404)) {
+        console.error('email or password are incorrect');
+      } else {
+        console.error('server error');
+      }
+    });
   };
 
   const handleEmailChange = (e: any) => {

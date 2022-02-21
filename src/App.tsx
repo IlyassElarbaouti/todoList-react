@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import TodoList from './pages/TodoList/TodoList';
 import PageNotFound from './pages/NotFound/PageNotFound';

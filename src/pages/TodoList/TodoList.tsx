@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import './TodoList.css';
 import TodoItem from '../../types/TodoItem';
 import {
@@ -11,10 +10,10 @@ import {
   fetchCreateTodo,
 } from '../../api/todos';
 import { fetchLogout, fetchRefresh } from '../../api/users';
-import Header from '../../components/Header/Header';
-import Todos from '../../components/Todos/Todos';
-import Filters from '../../components/Filters/Filters';
-import Form from '../../components/Form/Form';
+import Header from '../../components/TodoList/Header/Header';
+import Todos from '../../components/TodoList/Todos/Todos';
+import Filters from '../../components/TodoList/Filters/Filters';
+import Form from '../../components/TodoList/Form/Form';
 
 const TodoList = () => {
   const [currentStatus, setCurrentStatus] = useState('all');
@@ -95,7 +94,7 @@ const TodoList = () => {
     fetchDeleteTodo(id).catch((e) => {
       const { status } = JSON.parse(JSON.stringify(e));
       if (status === 401) {
-        fetchRefresh(fetchDeleteTodo(id));
+        fetchRefresh(() => fetchDeleteTodo(id));
       } else {
         alert('server error');
       }
