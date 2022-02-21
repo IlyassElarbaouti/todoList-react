@@ -19,7 +19,17 @@ const SignIn = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
-    fetchLogin(email, password, navigate);
+    fetchLogin(email, password).then((res) => {
+      if (res.status === 200 && res.data.user.isActivated) {
+        localStorage.setItem('token', res.data.accessToken);
+        localStorage.setItem('refreshToken', res.data.refreshToken);
+        return window.location.reload();
+      }
+      if (res.status === 200 && !res.data.user.isActivated) {
+        return navigate('/activation');
+      }
+      return navigate('/notfound');
+    });
   };
 
   const handleEmailChange = (e: any) => {
