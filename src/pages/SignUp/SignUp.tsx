@@ -23,9 +23,9 @@ const SignUp = () => {
 
       if (res.status === 400) {
         navigate('/');
-        return alert('user already exists');
+        return console.error('user already exists');
       }
-      return alert('server error');
+      return console.error('server error');
     });
   };
 
