@@ -31,20 +31,14 @@ export const fetchRefresh = () => {
 };
 
 const UNAUTHORIZED = 401;
-const NOTFOUND = 404;
-const BADREQUEST = 400;
 axios.interceptors.response.use(
   (response) => response,
   (error) => {
     const { status } = error.response;
     if (status === UNAUTHORIZED) {
       fetchRefresh();
-    } else if (status === NOTFOUND) {
-      console.error('not found');
-    } else if (status === BADREQUEST) {
-      console.error('bad request');
     } else {
-      console.error('server error');
+      console.error(error.message);
     }
   }
 );
