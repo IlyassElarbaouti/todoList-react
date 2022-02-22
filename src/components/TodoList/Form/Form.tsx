@@ -11,9 +11,11 @@ import TodoItem from '../../../types/TodoItem';
 
 const Form = () => {
   const dispatch = useDispatch();
-  const todos = useSelector((state: RootState) => state.todos);
+
+  const todoList = useSelector((state: RootState) => state.todos);
   const nextId = useSelector((state: RootState) => state.nextId);
-  const isAllChecked = todos.every((todo: TodoItem) => todo.checked);
+  const isAllChecked = todoList.every((todo: TodoItem) => todo.checked);
+  const [value, setValue] = useState('');
 
   const handleCreateTodo = useCallback(
     (label: string) => {
@@ -28,7 +30,7 @@ const Form = () => {
           console.error('Create Todo', error);
         });
     },
-    [todos, nextId]
+    [todoList, nextId]
   );
 
   const handleToggleChecked = useCallback(() => {
@@ -40,7 +42,6 @@ const Form = () => {
         console.error('handle Toggle Checked', error);
       });
   }, [isAllChecked]);
-  const [value, setValue] = useState('');
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);

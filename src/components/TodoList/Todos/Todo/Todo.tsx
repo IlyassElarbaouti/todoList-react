@@ -4,8 +4,8 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import todosActions from '../../../../state/actions/todos';
 import TodoItem from '../../../../types/TodoItem';
-import './Todo.css';
 import { fetchDeleteTodo, fetchEditTodo } from '../../../../api/todos';
+import './Todo.css';
 
 interface Props {
   todo: TodoItem;

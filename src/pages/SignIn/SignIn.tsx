@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { fetchLogin } from '../../api/users';
 import SplitScreen from '../../components/SplitScreen/SplitScreen';
 import Title from '../../components/SplitScreen/Title/Title';
 import { Description } from '../../components/SplitScreen/Description.js/Description';
 import Paragraph from '../../components/SplitScreen/Paragraph/Paragraph';
+import authActions from '../../state/actions/authentication';
 import {
   AuthForm,
   Input,
@@ -12,8 +14,8 @@ import {
 } from '../../components/SplitScreen/AuthForm/AuthForm';
 
 const SignIn = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -24,7 +26,7 @@ const SignIn = () => {
         if (res.status === 200 && res.data.user.isActivated) {
           localStorage.setItem('token', res.data.accessToken);
           localStorage.setItem('refreshToken', res.data.refreshToken);
-          window.location.reload();
+          dispatch(authActions.toggleAuth());
         } else if (res.status === 200 && !res.data.user.isActivated) {
           return navigate('/activation');
         }

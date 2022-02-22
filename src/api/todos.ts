@@ -1,7 +1,7 @@
 import axios from 'axios';
 import TodoItem from '../types/TodoItem';
 
-export const baseUrl = process.env.BASE_URL;
+export const baseUrl: string = process.env.BASE_URL;
 
 const headers = {
   'Content-Type': 'application/json',

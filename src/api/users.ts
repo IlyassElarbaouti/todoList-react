@@ -19,14 +19,14 @@ export const fetchLogout = () =>
   });
 
 export const fetchRefresh = () => {
-  localStorage.clear();
   return axios
     .post(`${baseUrl}/refresh`, {
       refreshToken: localStorage.getItem('refreshToken'),
     })
     .then((res) => {
+      localStorage.clear();
       localStorage.setItem('token', res.data.accessToken);
-      localStorage.setItem('refreshToken', res.data.refreshsToken);
+      localStorage.setItem('refreshToken', res.data.refreshToken);
     });
 };
 
@@ -36,6 +36,7 @@ axios.interceptors.response.use(
     const { status } = error.response;
     if (status === 401) {
       fetchRefresh();
+      window.location.reload();
     }
   }
 );

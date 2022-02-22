@@ -2,26 +2,20 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import todosActions from '../../../state/actions/todos';
 import allStatus from '../../../constants/allStatus';
-import './Filters.css';
 import TodoItem from '../../../types/TodoItem';
 import FilterBtn from './FilterBtn/FilterBtn';
 import { fetchClearCompleted } from '../../../api/todos';
-import statusActions from '../../../state/actions/status';
 import RootState from '../../../types/RootState';
+import './Filters.css';
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const currentStatus = useSelector((state: RootState) => state.currentStatus);
   const todoList: Array<TodoItem> = useSelector(
     (state: RootState) => state.todos
   );
 
   const activeTodosCount = todoList.filter((todo) => !todo.checked).length;
   const completedTodosExist = todoList.some((todo) => todo.checked);
-
-  const handleEditStatus = useCallback((newStatus: string) => {
-    dispatch(statusActions.setStatus(newStatus));
-  }, []);
 
   const handleClearCompleted = useCallback(() => {
     fetchClearCompleted()
@@ -41,8 +35,6 @@ const Filters = () => {
           {allStatus.map((status) => (
             <FilterBtn
               key={allStatus.indexOf(status)}
-              onSetStatus={handleEditStatus}
-              currentStatus={currentStatus}
               statusName={status.name}
               statusValue={status.value}
             />
