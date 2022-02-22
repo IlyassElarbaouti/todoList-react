@@ -4,7 +4,6 @@ import { fetchLogout } from '../../../api/users';
 import './Header.css';
 
 const Header = () => {
-
   const handleLogout = () => {
     fetchLogout()
       .then(() => {
@@ -15,6 +14,7 @@ const Header = () => {
         console.error('logout', error);
       });
   };
+
   return (
     <nav className="header">
       <h3 className="header__title">welcome to TODO APP</h3>
