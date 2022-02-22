@@ -6,7 +6,6 @@ import SplitScreen from '../../components/SplitScreen/SplitScreen';
 import Title from '../../components/SplitScreen/Title/Title';
 import { Description } from '../../components/SplitScreen/Description.js/Description';
 import Paragraph from '../../components/SplitScreen/Paragraph/Paragraph';
-import authActions from '../../state/actions/authentication';
 import {
   AuthForm,
   Input,
@@ -26,7 +25,7 @@ const SignIn = () => {
         if (res.status === 200 && res.data.user.isActivated) {
           localStorage.setItem('token', res.data.accessToken);
           localStorage.setItem('refreshToken', res.data.refreshToken);
-          dispatch(authActions.toggleAuth());
+          window.location.reload();
         } else if (res.status === 200 && !res.data.user.isActivated) {
           return navigate('/activation');
         }

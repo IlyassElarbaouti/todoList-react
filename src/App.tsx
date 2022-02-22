@@ -9,7 +9,7 @@ import Activation from './pages/Activation/Activation';
 import RootState from './types/RootState';
 
 const App = () => {
-  const isAuth = useSelector((state: RootState) => state.isAuth);
+  const isAuth = localStorage.getItem('token');
   return (
     <Routes>
       <Route path="/" element={isAuth ? <TodoList /> : <SignIn />} />
