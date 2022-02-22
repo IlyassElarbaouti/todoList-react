@@ -1,6 +1,6 @@
-import statusItem from '../types/statusItem';
+import StatusItem from '../types/StatusItem';
 
-const statuses: Array<statusItem> = [
+const statuses: Array<StatusItem> = [
   {
     name: 'All',
     value: 'all',

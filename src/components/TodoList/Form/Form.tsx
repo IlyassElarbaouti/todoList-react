@@ -1,15 +1,45 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
-import './Form.css';
+import React, { ChangeEvent, FormEvent, useCallback, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import todosActions from '../../../state/actions/todos';
+import { fetchCreateTodo, fetchToggleChecked } from '../../../api/todos';
+import nextIdActions from '../../../state/actions/nextId';
+import './Form.css';
+import RootState from '../../../types/RootState';
+import TodoItem from '../../../types/TodoItem';
 
-interface Props {
-  onCreateTodo: (value: string) => void;
-  onToggleChecked: () => void;
-  isAllChecked: boolean;
-}
+const Form = () => {
+  const dispatch = useDispatch();
+  const todos = useSelector((state: RootState) => state.todos);
+  const nextId = useSelector((state: RootState) => state.nextId);
+  const isAllChecked = todos.every((todo: TodoItem) => todo.checked);
 
-const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
+  const handleCreateTodo = useCallback(
+    (label: string) => {
+      fetchCreateTodo(label)
+        .then(() => {
+          dispatch(
+            todosActions.createTodo({ label, id: nextId, checked: false })
+          );
+          dispatch(nextIdActions.setNextId(nextId + 1));
+        })
+        .catch((error) => {
+          console.error('Create Todo', error);
+        });
+    },
+    [todos, nextId]
+  );
+
+  const handleToggleChecked = useCallback(() => {
+    fetchToggleChecked()
+      .then(() => {
+        dispatch(todosActions.toggleChecked(!isAllChecked));
+      })
+      .catch((error) => {
+        console.error('handle Toggle Checked', error);
+      });
+  }, [isAllChecked]);
   const [value, setValue] = useState('');
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,14 +52,14 @@ const Form = ({ onCreateTodo, onToggleChecked, isAllChecked }: Props) => {
       setValue('');
       return;
     }
-    onCreateTodo(value);
+    handleCreateTodo(value);
     setValue('');
   };
 
   return (
     <div className="form__container">
       <FontAwesomeIcon
-        onClick={onToggleChecked}
+        onClick={handleToggleChecked}
         icon={faChevronDown}
         className={`drop ${isAllChecked ? 'dark' : null}`}
       />

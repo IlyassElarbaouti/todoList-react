@@ -1,24 +1,37 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import todosActions from '../../../state/actions/todos';
 import allStatus from '../../../constants/allStatus';
 import './Filters.css';
 import TodoItem from '../../../types/TodoItem';
 import FilterBtn from './FilterBtn/FilterBtn';
+import { fetchClearCompleted } from '../../../api/todos';
+import statusActions from '../../../state/actions/status';
+import RootState from '../../../types/RootState';
 
-interface Props {
-  todoList: Array<TodoItem>;
-  onSetStatus: (status: string) => void;
-  currentStatus: string;
-  onClearCompleted: () => void;
-}
+const Filters = () => {
+  const dispatch = useDispatch();
+  const currentStatus = useSelector((state: RootState) => state.currentStatus);
+  const todoList: Array<TodoItem> = useSelector(
+    (state: RootState) => state.todos
+  );
 
-const Filters = ({
-  todoList,
-  onSetStatus,
-  currentStatus,
-  onClearCompleted,
-}: Props) => {
   const activeTodosCount = todoList.filter((todo) => !todo.checked).length;
   const completedTodosExist = todoList.some((todo) => todo.checked);
+
+  const handleEditStatus = useCallback((newStatus: string) => {
+    dispatch(statusActions.setStatus(newStatus));
+  }, []);
+
+  const handleClearCompleted = useCallback(() => {
+    fetchClearCompleted()
+      .then(() => {
+        dispatch(todosActions.clearCompleted());
+      })
+      .catch((error) => {
+        console.error('Clear Completed', error);
+      });
+  }, []);
 
   return (
     <div className="filters__container">
@@ -28,7 +41,7 @@ const Filters = ({
           {allStatus.map((status) => (
             <FilterBtn
               key={allStatus.indexOf(status)}
-              onSetStatus={onSetStatus}
+              onSetStatus={handleEditStatus}
               currentStatus={currentStatus}
               statusName={status.name}
               statusValue={status.value}
@@ -36,7 +49,10 @@ const Filters = ({
           ))}
         </div>
         {completedTodosExist ? (
-          <button onClick={onClearCompleted} className="delete-complete btn">
+          <button
+            onClick={handleClearCompleted}
+            className="delete-complete btn"
+          >
             clear completed
           </button>
         ) : null}

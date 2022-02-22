@@ -1,19 +1,41 @@
 import React, { FormEvent, ChangeEvent, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch } from 'react-redux';
+import todosActions from '../../../../state/actions/todos';
 import TodoItem from '../../../../types/TodoItem';
 import './Todo.css';
+import { fetchDeleteTodo, fetchEditTodo } from '../../../../api/todos';
 
 interface Props {
   todo: TodoItem;
-  onDeleteTodo: (id: number) => void;
-  onEditTodo: (todo: TodoItem) => void;
 }
 
-const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
+const Todo = ({ todo }: Props) => {
+  const dispatch = useDispatch();
   const [label, setLabel] = useState(todo.label);
   const [showInput, setShowInput] = useState(false);
   const [inputValue, setInputValue] = useState('');
+
+  const handleEditTodo = (newTodo: TodoItem) => {
+    fetchEditTodo(newTodo)
+      .then((res) => {
+        dispatch(todosActions.editTodo(res.data));
+      })
+      .catch((error) => {
+        console.error('edit todo', error);
+      });
+  };
+
+  const handleDeleteTodo = (id: number) => {
+    fetchDeleteTodo(id)
+      .then(() => {
+        dispatch(todosActions.deleteTodo(id));
+      })
+      .catch((error) => {
+        console.error('Delete Todo', error);
+      });
+  };
 
   const handleDoubleClick = () => {
     setShowInput(!showInput);
@@ -34,7 +56,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
 
     setInputValue('');
     setLabel(inputValue);
-    onEditTodo({ ...todo, label: inputValue });
+    handleEditTodo({ ...todo, label: inputValue });
     setShowInput(!showInput);
   };
 
@@ -55,7 +77,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
         <input
           onChange={() => {}}
           checked={todo.checked}
-          onClick={() => onEditTodo({ ...todo, checked: !todo.checked })}
+          onClick={() => handleEditTodo({ ...todo, checked: !todo.checked })}
           className="checkbox"
           type="checkbox"
         />
@@ -75,7 +97,7 @@ const Todo = ({ todo, onDeleteTodo, onEditTodo }: Props) => {
           {label}
         </h2>
       )}
-      <button onClick={() => onDeleteTodo(todo.id)} className="closeBtn">
+      <button onClick={() => handleDeleteTodo(todo.id)} className="closeBtn">
         x
       </button>
     </div>
