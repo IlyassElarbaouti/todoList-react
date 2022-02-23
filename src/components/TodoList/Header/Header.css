@@ -17,3 +17,7 @@
   border: solid 1px black;
   padding: 4px 9px;
 }
+
+.header__title{
+  cursor: pointer;
+}
